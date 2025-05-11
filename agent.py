@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 from groq import Groq
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
-import httpx
 
 # Configure logging
 logging.basicConfig(
@@ -36,18 +35,15 @@ class QAAgent:
             raise ValueError("GROQ_API_KEY not found in environment variables. Please add it to your .env file.")
         
         try:
-            http_client = httpx.Client(base_url="https://api.groq.com")
-            self.groq_client = Groq(
-                api_key=groq_api_key,
-                http_client=http_client
-            )
+            # Initialize Groq client directly without additional parameters
+            self.groq_client = Groq(api_key=groq_api_key)
             logger.info("Groq client initialized successfully")
         except Exception as e:
             logger.error(f"Failed to initialize Groq client: {e}")
             raise
         
         # Set model name
-        self.model_name = "llama3-8b-8192"
+        self.model_name = "llama3-8b-8192"  # You can also use "llama3-70b-8192" for better results
         logger.info(f"Using model: {self.model_name}")
         
         # Create tools
@@ -142,21 +138,12 @@ class QAAgent:
                 context_text = rag_tool(f"define {word}")
                 logger.info(f"Retrieved context for definition")
                 
-                # Generate answer using Groq
+                # Generate answer using Groq with streaming
                 prompt = f"Based on the following information, provide a clear and concise definition of '{word}':\n\n{context_text}"
                 
                 try:
                     logger.info("Sending definition request to Groq")
-                    completion = self.groq_client.chat.completions.create(
-                        model=self.model_name,
-                        messages=[
-                            {"role": "system", "content": "You are a helpful assistant that provides clear definitions based on the provided context."},
-                            {"role": "user", "content": prompt}
-                        ],
-                        temperature=0.1,
-                        max_tokens=300
-                    )
-                    answer = completion.choices[0].message.content
+                    answer = self._generate_with_groq(prompt, system_message="You are a helpful assistant that provides clear definitions based on the provided context.")
                     logger.info("Successfully generated definition")
                     return answer
                 except Exception as e:
@@ -172,6 +159,32 @@ class QAAgent:
             "Calculator": calculator_tool,
             "Dictionary": dictionary_tool
         }
+    
+    def _generate_with_groq(self, prompt: str, system_message: str = "You are a helpful assistant that answers questions based on the provided context. If the information is not in the context, say so.") -> str:
+        """Generate a response using Groq with streaming."""
+        try:
+            stream = self.groq_client.chat.completions.create(
+                model=self.model_name,
+                messages=[
+                    {"role": "system", "content": system_message},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.1,
+                max_tokens=500,
+                stream=True
+            )
+            
+            # Collect the streaming response
+            full_response = ""
+            for chunk in stream:
+                content = chunk.choices[0].delta.content
+                if content:
+                    full_response += content
+            
+            return full_response
+        except Exception as e:
+            logger.error(f"Error generating with Groq: {e}")
+            raise
     
     def process_query(self, query: str) -> Dict[str, Any]:
         """Process a user query and return the result."""
@@ -212,16 +225,10 @@ class QAAgent:
                 
                 try:
                     logger.info("Sending definition request to Groq")
-                    completion = self.groq_client.chat.completions.create(
-                        model=self.model_name,
-                        messages=[
-                            {"role": "system", "content": "You are a helpful assistant that provides clear definitions based on the provided context."},
-                            {"role": "user", "content": prompt}
-                        ],
-                        temperature=0.1,
-                        max_tokens=300
+                    answer = self._generate_with_groq(
+                        prompt, 
+                        system_message="You are a helpful assistant that provides clear definitions based on the provided context."
                     )
-                    answer = completion.choices[0].message.content
                     logger.info("Successfully generated definition")
                 except Exception as e:
                     logger.error(f"Error with Groq LLM: {e}")
@@ -237,16 +244,7 @@ class QAAgent:
                 
                 try:
                     logger.info("Sending query to Groq")
-                    completion = self.groq_client.chat.completions.create(
-                        model=self.model_name,
-                        messages=[
-                            {"role": "system", "content": "You are a helpful assistant that answers questions based on the provided context. If the information is not in the context, say so."},
-                            {"role": "user", "content": prompt}
-                        ],
-                        temperature=0.1,
-                        max_tokens=500
-                    )
-                    answer = completion.choices[0].message.content
+                    answer = self._generate_with_groq(prompt)
                     logger.info("Successfully generated answer")
                 except Exception as e:
                     logger.error(f"Error with Groq LLM: {e}")
