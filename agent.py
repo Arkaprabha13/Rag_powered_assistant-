@@ -23,7 +23,18 @@ class QAAgent:
         else:
             print("GROQ_API_KEY found in environment variables.")
         
-        self.groq_client = Groq(api_key=groq_api_key)
+        # self.groq_client = Groq(api_key=groq_api_key)
+        try:
+            self.groq_client = Groq(api_key=groq_api_key)
+        except TypeError as e:
+            if "unexpected keyword argument 'proxies'" in str(e):
+                # Handle the specific error by creating a client without proxies
+                import httpx
+                http_client = httpx.Client(base_url="https://api.groq.com")
+                self.groq_client = Groq(api_key=groq_api_key, http_client=http_client)
+            else:
+                raise e
+
         self.model_name = "llama3-8b-8192"  # You can also use "llama3-70b-8192" for better results
         
         # Initialize memory for conversation history
