@@ -2,11 +2,16 @@
 streamlit==1.41.1
 python-dotenv==1.0.0
 
+langchain==0.3.25
+langchain-core==0.3.59
+langchain-groq==0.3.13  # or latest compatible version
+
+
 # LangChain ecosystem
-langchain==0.1.6
-langchain-core==0.1.22
+# langchain==0.1.6
+# langchain-core==0.1.22
 langchain-community==0.0.20
-langchain-groq==0.1.5
+# langchain-groq==0.1.5
 langsmith==0.0.87
 # Vector database and embeddings
 faiss-cpu==1.7.4
