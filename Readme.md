@@ -4,7 +4,7 @@
 
 This project implements a sophisticated knowledge assistant that combines Retrieval-Augmented Generation (RAG) with a multi-agent architecture to deliver accurate, context-aware responses. The system intelligently routes queries to specialized tools based on query intent, retrieves relevant information from a document collection, and generates natural language answers using state-of-the-art language models.
 
-![System Architecture](https://int Architecture**: Intelligent query routing between specialized tools based on intent detection
+**System Architecture** Intelligent query routing between specialized tools based on intent detection
 - **Retrieval-Augmented Generation (RAG)**: Enhances LLM responses with relevant context from a document collection
 - **Interactive Web Interface**: Clean, user-friendly Streamlit application for asking questions and viewing results
 - **Document Management**: Upload and process new documents through the web interface
