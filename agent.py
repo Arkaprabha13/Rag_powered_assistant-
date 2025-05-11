@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 from groq import Groq
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
+import httpx
 
 # Configure logging
 logging.basicConfig(
@@ -35,9 +36,10 @@ class QAAgent:
             raise ValueError("GROQ_API_KEY not found in environment variables. Please add it to your .env file.")
         
         try:
+            http_client = httpx.Client(base_url="https://api.groq.com")
             self.groq_client = Groq(
                 api_key=groq_api_key,
-                base_url="https://api.groq.com"
+                http_client=http_client
             )
             logger.info("Groq client initialized successfully")
         except Exception as e:
