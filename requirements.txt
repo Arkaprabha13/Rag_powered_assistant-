@@ -1,37 +1,20 @@
-# Core dependencies
+setuptools>=65.5.0
+wheel>=0.38.0
 streamlit==1.41.1
 python-dotenv==1.0.0
-
 langchain==0.3.25
 langchain-core==0.3.59
-langchain-groq==0.3.13  # or latest compatible version
-
-
-# LangChain ecosystem
-# langchain==0.1.6
-# langchain-core==0.1.22
-langchain-community==0.0.20
-# langchain-groq==0.1.5
-langsmith==0.0.87
-# Vector database and embeddings
+langchain-groq==0.3.2
+langsmith>=0.1.17,<0.4
 faiss-cpu==1.7.4
-sentence-transformers==4.1.0
-
-# LLM integration
-groq==0.24.0
-
-# Document processing
+sentence-transformers==2.2.2
+groq==0.4.1
 tiktoken==0.5.2
-chardet==5.2.0
-
-# Utilities
-numpy==1.26.4
-pandas==2.2.3
-pydantic==2.11.4
-regex==2024.11.6
-tqdm==4.67.1
-tenacity==8.5.0
-
-
-langchain-openai==0.0.5
-
+numpy>=1.24.4,<2.0.0
+pandas>=2.0.0,<2.1.0
+chardet>=5.0.0
+pydantic>=2.0.0,<3.0.0
+regex>=2023.0.0
+tqdm>=4.64.0
+tenacity>=8.0.0
+rich>=13.0.0
