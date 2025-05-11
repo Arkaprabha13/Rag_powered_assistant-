@@ -1,0 +1,132 @@
+IPL DATA ANALYSIS
+
+Data and statistical analysis of IPL data from 2008 to 2016. 
+Source: Indian Premier League CSV dataset 577 matches up to season 9 by HarshaVardhan
+
+Questions to be answered:
+
+1) Team with most wins over entire time frame and per season.
+
+2)Stats of top run scorers such as age, batting style, experience.
+
+3)Most valuable batsmen whose runs contribute most to team winning the match, 'game changers'.
+
+4)Toss decision based on venues 
+
+
+There are 6 tables in the dataset as shown at the bottom here, and namely,
+1. Ball by ball
+2. Match
+3. Player_match
+4. Player
+5. Team
+6. Season
+
+1)Team with most wins over entire time frame and per season.
+
+TEAM PERFORMANCE OVER ENTIRE LEAGUE
+
+select team.team_name, count(match_winner_id) from match JOIN team 
+ON match.match_winner_id = team.team_id 
+group by team.team_name 
+order by count(match_winner_id) DESC;
+
+          team_name          | count
+-----------------------------+-------
+ Mumbai Indians              |    80
+ Chennai Super Kings         |    79
+ Royal Challengers Bangalore |    70
+ Kolkata Knight Riders       |    68
+ Kings XI Punjab             |    63
+ Rajasthan Royals            |    63
+ Delhi Daredevils            |    56
+ Sunrisers Hyderabad         |    34
+ Deccan Chargers             |    29
+ Pune Warriors               |    12
+ Gujarat Lions               |     9
+ Kochi Tuskers Kerala        |     6
+ Rising Pune Supergiants     |     5
+(13 rows)
+
+-- HIGHEST WINS PER SEASON
+
+select extract(year from match.match_date),team.team_name, count(match_winner_id) 
+from match JOIN team ON match.match_winner_id = team.team_id 
+group by team.team_name, extract(year from match.match_date) 
+order by count(match_winner_id) DESC;
+date_part |          team_name          | count
+-----------+-----------------------------+-------
+      2013 | Mumbai Indians              |    13
+      2008 | Rajasthan Royals            |    13
+      2013 | Chennai Super Kings         |    12
+      2012 | Kolkata Knight Riders       |    12
+      2014 | Kings XI Punjab             |    12
+      2010 | Mumbai Indians              |    11
+      2012 | Delhi Daredevils            |    11
+      2014 | Kolkata Knight Riders       |    11
+      2011 | Chennai Super Kings         |    11
+      2013 | Rajasthan Royals            |    11
+      2016 | Sunrisers Hyderabad         |    11
+      2012 | Mumbai Indians              |    10
+
+Data Overview of tables
+
+
+Season
+season_id | season_year | orange_cap_id | purple_cap_id | man_of_the_series_id
+-----------+-------------+---------------+---------------+----------------------
+         1 |        2008 |           100 |           102 |                   32
+         2 |        2009 |            18 |            61 |                   53
+         3 |        2010 |           133 |           131 |                  133
+         4 |        2011 |           162 |           194 |                  162
+         5 |        2012 |           162 |           190 |                  315
+         6 |        2013 |            19 |            71 |                   32
+         7 |        2014 |            46 |           364 |                  305
+         8 |        2015 |           187 |            71 |                  334
+         9 |        2016 |             8 |           299 |                    8
+
+
+Match
+
+ match_id | match_date | team_name_id | opponent_team_id | season_id |                      venue_name                      | toss_winner_id
+----------+------------+--------------+------------------+-----------+------------------------------------------------------+----------------
+   335987 | 2008-04-18 |            2 |                1 |         1 | M Chinnaswamy Stadium                                |              2
+   335988 | 2008-04-19 |            4 |                3 |         1 | Punjab Cricket Association Stadium, Mohali           |              3
+ 
+  toss_decision | is_superover | is_result | is_duckworthlewis |  win_type  | won_by | match_winner_id | man_of_the_match_id | first_umpire_id | 
+
+   field         |            0 |         1 |                 0 | by runs    |    140 |               1 |                   2 |             470 | 
+|  bat           |            0 |         1 |                 0 | by runs    |     33 |               3 |                  19 |             471 |  
+
+   second_umpire_id |   city_name    | host_country
+
+                477 | Bangalore      | India
+                487 | Chandigarh     | India
+
+
+Player match
+
+ match_id | player_id | team_id | is_keeper | is_captain
+----------+-----------+---------+-----------+------------
+   335987 |         1 |       1 |         0 |          1
+   335987 |         2 |       1 |         0 |          0
+ 
+
+Player
+ player_id |     player_name      |    dob     | batting_hand |     bowling_skill      | country_name |           age
+-----------+----------------------+------------+--------------+------------------------+--------------+--------------------------
+         1 | SC Ganguly           | 1972-07-08 | Left_Hand    | Right-arm medium       | India        | 44 years 5 mons 24 days
+        17 | PA Patel             | 1985-03-09 | Left_Hand    |                        | India        | 31 years 9 mons 23 days
+         2 | BB McCullum          | 1981-09-27 | Right_Hand   | Right-arm medium       | New Zealand  | 35 years 3 mons 4 days
+
+
+Ball by Ball
+
+ match_id | innings_id | over_id | ball_id | team_batting_id | team_bowling_id | striker_id | striker_batting_position | 
+----------+------------+---------+---------+-----------------+-----------------+------------+--------------------------+
+   336033 |          2 |       7 |       2 |               7 |               4 |        133 |                        2 |
+   392201 |          1 |      19 |       3 |               3 |               8 |         23 |                        7 |
+
+   non_striker_id | bowler_id | batsman_scored | extra_type | extra_runs | player_dissimal_id |  
+----------------+-----------+----------------+------------+------------+--------------------+----
+             22 |       165 | 1              |             

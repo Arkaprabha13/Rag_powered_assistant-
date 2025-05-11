@@ -1,0 +1,1699 @@
+energies
+Review
+Review of Positive and Negative Impacts of Electric
+Vehicles Charging on Electric Power Systems
+Morsy Nour 1,2,*, José Pablo Chaves-Ávila 1
+, Gaber Magdy 2
+and Álvaro Sánchez-Miralles 1
+1
+Institute for Research in Technology (IIT), ICAI School of Engineering, Comillas Pontiﬁcal University,
+28015 Madrid, Spain; jose.chaves@iit.comillas.edu (J.P.C.-Á.); alvaro.sanchez@iit.comillas.edu (Á.S.-M.)
+2
+Department of Electrical Engineering, Faculty of Energy Engineering, Aswan University,
+Aswan 81528, Egypt; gabermagdy@aswu.edu.eg
+*
+Correspondence: morsy.mohammed@iit.comillas.edu
+Received: 23 July 2020; Accepted: 4 September 2020; Published: 8 September 2020
+
+
+Abstract: There is a continuous and fast increase in electric vehicles (EVs) adoption in many countries
+due to the reduction of EVs prices, governments’ incentives and subsidies on EVs, the need for energy
+independence, and environmental issues. It is expected that EVs will dominate the private cars
+market in the coming years. These EVs charge their batteries from the power grid and may cause
+severe eﬀects if not managed properly. On the other hand, they can provide many beneﬁts to the
+power grid and get revenues for EV owners if managed properly. The main contribution of the article
+is to provide a review of potential negative impacts of EVs charging on electric power systems mainly
+due to uncontrolled charging and how through controlled charging and discharging those impacts
+can be reduced and become even positive impacts. The impacts of uncontrolled EVs charging on
+the increase of peak demand, voltage deviation from the acceptable limits, phase unbalance due
+to the single-phase chargers, harmonics distortion, overloading of the power system equipment,
+and increase of power losses are presented. Furthermore, a review of the positive impacts of controlled
+EVs charging and discharging, and the electrical services that it can provide like frequency regulation,
+voltage regulation and reactive power compensation, congestion management, and improving power
+quality are presented. Moreover, a few promising research topics that need more investigation in
+future research are brieﬂy discussed. Furthermore, the concepts and general background of EVs,
+EVs market, EV charging technology, the charging methods are presented.
+Keywords: electric vehicles; uncontrolled charging; delayed charging; controlled charging; V2G; V2B;
+V2H; peak shaving; valley ﬁlling; congestion management; renewable energy sources
+1. Introduction
+Greenhouse gases (GHGs) emissions, global warming, and climate change are getting signiﬁcant
+attention worldwide [1]. Countries aim to diminish the use of fossil fuel which is the main reason
+behind these issues. Most of fossil fuel consumption is in electricity generation and transportation
+sectors [2].
+In 2014, 35% of the total energy consumption was by the transportation sector [3].
+Electricity generation can cut fossil fuel usage by moving to renewable energy sources (RESs) instead
+of traditional nonrenewable generation and transportation sector can cut fossil fuel usage by moving to
+electriﬁed transportation. With this transformation in the transportation sector, carbon dioxide (CO2)
+emissions can be reduced [4,5]. The advancement in EV technology can lower the reliance on fossil
+fuels and leads to emission reduction [5]. Charging the EVs from a power grid with high share of RESs
+generation contributes more to decreasing pollutant emissions [6].
+Energies 2020, 13, 4675; doi:10.3390/en13184675
+www.mdpi.com/journal/energies
+Energies 2020, 13, 4675
+2 of 34
+Electriﬁed transportation like metros, electric trains, trolleybuses, trams, etc., are widely used in
+many countries public transportation and is considered a mature technology, but private electriﬁed
+transportation like private EVs have not had large adoption in the past due to limitations in battery
+technology in terms of heavy weight, high price, short life, and long charging duration. Due to the
+breakthroughs and recent developments in battery technology, EVs are proposed as a competitor to
+traditional vehicles driven by gasoline due to the fast decline of EV prices [7]. Moreover, EVs produce
+no pollution (locally) and have a very high energy conversion eﬃciency compared to traditional
+vehicles because the internal combustion engine (ICE) is less eﬃcient than the electric motor (EM).
+Furthermore, several countries already initiated governmental programs to increase EVs market share
+by ﬁnancial subsidies and tax exemptions to motivate people to buy EVs. Additionally, many car
+manufacturers produce various types of EVs that have diﬀerent speciﬁcations and prices. This gives
+the buyer a lot of options to choose from depending on his budget and car usage (i.e., long distance or
+short distance).
+These EVs can be charged from large charging stations, street chargers, workplace chargers,
+and private home chargers [8], which will be supplied from the distribution network. It is expected
+that this new load which draws a large amount of electric energy from the power system in a short
+time will have harmful eﬀects on the distribution network if not managed optimally and will foster
+the need for large infrastructure upgrades, which are an economic burden for utility companies.
+Therefore, comprehensive studies should be executed to understand and assess the characteristics of
+EVs load and probable eﬀects they may have on the electric power system, especially the distribution
+networks [9], and consider this new load in the design, operation, and planning processes. Additionally,
+techniques to minimize and alleviate these negative eﬀects and for optimal integration of EVs into the
+power grid should be developed [10].
+A large number of research studies have investigated and assessed the impacts of uncontrolled
+EV charging on distribution networks due to uncertainties related to these studies. Many uncertainties
+should be considered like charging start time, the charger power rating, the charging location,
+EVs battery capacity, EVs battery state of charge (SoC) [11] when started charging, penetration level,
+and distribution network status. The studies assessed the impacts of uncontrolled EVs charging on
+distribution networks total power demand [12], transformer loading and life [13], cable loading [14],
+voltage proﬁle [15], power losses [16], voltage and current unbalance [17], and harmonics distortion [18].
+Moreover, various studies proposed solutions for optimal integration of EVs by delayed charging,
+smart charging, vehicle to grid (V2G) technology, vehicle to building (V2B) technology, and vehicle
+to home (V2H) technology, and how it can provide electrical services like frequency regulation,
+voltage regulation and reactive power compensation, peak shaving and valley ﬁlling, integration of
+RESs, spinning reserves, and improving power quality [19,20].
+This paper is organized as follows: Section 2 presents a general background of EVs, EVs market,
+EVs types, the beneﬁts and challenges of EVs, and EV charging technology. Section 3 presents
+the charging and discharging methods; for instance, uncontrolled charging, delayed charging,
+controlled charging, V2G technology, V2B technology, and V2H technology. Section 4 presents
+the negative impacts of uncontrolled EVs charging on electric power systems. Section 5 presents the
+positive impacts of controlled charging and discharging of EVs on electric power systems. Section 6
+presents a few promising research topics that need more investigation in future research. Finally,
+conclusions are presented in Section 7.
+2. Electric Vehicles Technology
+An EV is a vehicle that is powered or driven, at least in part by electricity such as trams, metros,
+electric cars, electric trains, trolleybuses, etc. Most of the mentioned technologies are mature and
+widely used, except the private EVs (i.e., electric cars), but they are getting huge attention in the last
+years. EV technology is not new as it appeared in the 19th century powered by lead–acid batteries and
+it was not used a lot because the fuel-powered cars, i.e., internal combustion engine vehicles (ICEVs),
+Energies 2020, 13, 4675
+3 of 34
+showed better performance at that time because the energy density of fuel was better than lead–acid
+batteries. Usually, EV terminology is widely used to refer to private electric cars and not to other
+electriﬁed transportation methods like trams, metros, etc.
+2.1. Electric Vehicles Market
+Based on the 2019 global EV outlook report of the International Energy Agency (IEA) [7], there is
+a very rapid growth of EVs market. The report shows that the EVs stock crossed 3 million in 2017
+and exceeded 5 million in 2018. China represents the largest EVs market, then Europe and the United
+States after that. Norway achieved the highest deployment of EVs with a market share of 46% followed
+by Iceland 17% and Sweden 8%. It is expected that the number of EVs will increase signiﬁcantly
+in the coming years. The forecasts for EVs number at 2030 between 130 and 250 million. There are
+many EVs in the market now from several manufacturers (BMW, Chevrolet, Ford, Hyundai, Kia,
+Mercedes-Benz, Mitsubishi, Nissan, Tesla, Renault, Volkswagen, etc.) with diﬀerent speciﬁcations
+(battery technology, battery capacity, electric motor power, electric range, and onboard charger power
+rating,) which gives a wide range of options for people interested in buying an EV. Although the fast
+increase in the EV market, it still represents a small percentage of the global passenger light-duty
+vehicles market currently. This means that EVs have a long way until they become capable of making
+a signiﬁcance in GHGs emissions and oil demands.
+It should be mentioned that large scale adoption of EVs will have economic impacts and they
+should be viewed from two points of view, the EV owners’ point of view and the power grid point of
+view [21]. From the power grid point of view, a high-power load represented in EVs will be introduced,
+which means additional expenses in fuel and generation capacity [22]. The grid power losses will rise,
+although they can be reduced by the use of controlled charging approaches [23]. Several studies showed
+that the electric power system will have a signiﬁcant power loss due to EVs charging with diﬀerent
+penetration levels. The lifespan of transformers and cables in the distribution grid may decrease due
+to excessive uncontrolled charging. A study in [24] showed that controlled charging of EVs results in
+reducing the peak demand and 60% saving in the system cost. Therefore, the improvement in EVs
+charging infrastructure and charging strategies need attention to enhance the power grid economic
+aspects. From EV owners’ point of view, various beneﬁts can be achieved like reducing the operating
+costs due to lower electricity prices compared with fuel and higher eﬃciency of EMs used in EVs
+compared with ICEs used in ICEVs [25]. On the other hand, the high initial cost of EVs due to the
+expensive batteries used compared with ICEVs represents a considerable challenge. Mass production
+of EVs, advancement in battery technology, new charging infrastructure and smart charging strategies,
+and providing rewards and incentives to EVs owners may control the high initial cost of EVs [26–28].
+2.2. Types of Electric Vehicles
+There are many types of EVs categorized according to the energy converter (i.e., ICE or EM)
+used to propel the vehicle, the power source (i.e., battery, fuel cell, or gasoline), and if it charges from
+an external source (i.e., charging station or home charger) [4]. A brief explanation of those types is
+presented in the following subsections. The basic structure of diﬀerent EVs types is shown in Figure 1.
+Energies 2020, 13, 4675
+4 of 34
+ 
+Figure 1. Basic structure of diﬀerent electric vehicles (EVs) types. (a) Hybrid Electric Vehicle (HEV);
+(b) Plug-in Hybrid Electric Vehicle (PHEV); (c) Battery Electric Vehicle (BEV); and (d) Fuel Cell Electric
+Vehicle (FCEV).
+2.2.1. Hybrid Electric Vehicle (HEV)
+HEV is similar to ICEV but with oversized EM and battery. The battery can be charged by
+regenerative braking and by the ICE at light loads. Usually, battery and EM drive the vehicle at
+lower speeds and the ICE drives the vehicle at higher speeds. Furthermore, EM can assist the ICE
+at high load and enhance vehicle performance and eﬃciency. HEV has lower GHGs emissions and
+fuel consumption than ICEVs. In this type, no charging from distribution network by EV charger is
+used [29,30]. Therefore, it does not result any negative impacts on the power system due to battery
+charging and cannot provide any electrical services. There are diﬀerent structures of this type [29]:
+series, parallel, series/parallel, mild, and complex HEVs, in addition to series/parallel plug-in hybrid
+electric vehicle (PHEV) which is explained in the next subsection. The basic conﬁguration for parallel
+HEV is shown in Figure 1a.
+2.2.2. Plug-in Hybrid Electric Vehicle (PHEV)
+This is a HEV, but its battery can be charged by regenerative braking, by ICE, and EV charger
+supplied from distribution network as well. It is characterized by larger EM power, smaller ICE,
+and larger battery capacity compared with HEV in order to extend the electric range. It can operate
+in all-electric mode and use EM only which results in zero GHGs emissions. The capacity of the
+battery speciﬁes the range of electric operation [29,30]. This type usually has a small battery capacity.
+Therefore, it is expected that it has a limited negative impact on electric power system. Moreover,
+its ability to provide electrical services is limited. PHEV can be in any hybrid conﬁguration. The basic
+conﬁguration for parallel PHEV is shown in Figure 1b.
+2.2.3. Battery Electric Vehicle (BEV)
+BEV is expected to dominate the EVs market with future advancements in battery technology
+and price reduction. BEV contains only EM which is powered by a battery and does not contain ICE.
+The electric driving range depends on battery capacity. The main advantage of this type is that it
+produces no emissions locally, which is very crucial in big cities. There are many conﬁgurations of
+Energies 2020, 13, 4675
+5 of 34
+this type [29] depending on diﬀerent companies’ designs but the basic conﬁguration and principal
+components are shown in Figure 1c. The battery is charged from the distribution network by diﬀerent
+kinds of EV chargers. Moreover, during deceleration and braking of EV the motor operates as a
+generator and produces electric energy that charges the battery. This is called regenerative braking
+which is used in other public electriﬁed transportation like metros and trams too. To enable regenerative
+braking bidirectional DC/AC converter is used. It allows electric energy to ﬂow from battery to AC
+motor in the driving mode and from the AC motor to the battery in braking mode [29,30]. The main
+challenge for BEV is the long charging period and limitation of public charging infrastructure. This issue
+will be tackled in the near future with the advancement in battery technology which will extend the
+electric range that the EV can drive before the need to be recharged. Furthermore, the large-scale
+deployment of public fast charging stations will reduce EV owners range anxiety. Moreover, in the
+future, BEV manufacturers may enable battery swapping. This means replacing the empty battery
+with a fully charged one in battery swapping station which needs a very short time. More details
+about battery swapping are given in Section 2.4.3. This type of EVs has the largest battery capacity
+and its charging can result in a severe negative impact on the power system if not managed properly.
+Additionally, its ability to provide electrical services is higher than other EV types.
+2.2.4. Fuel Cell Electric Vehicle (FCEV)
+FCEV is powered by EM like BEV, but it uses a fuel cell instead of a battery. The vehicle is
+refueled with hydrogen and the fuel cell converts hydrogen gas chemical energy to electric energy
+which powers EV motor. Hydrogen can be produced from fossil fuels like natural gas or water
+electrolysis. FCEV has short refueling time like ICEVs [29,30]. The basic conﬁguration of FCEV is
+shown in Figure 1d. It can also work with a combination of battery and supercapacitors. If no battery
+is used, this vehicle type will have no impact on the power system because it does not need electric
+charging from distribution system.
+2.3. Beneﬁts and Challenges of Electric Vehicles
+It is essential to introduce the advantages and disadvantages of conventional vehicles which
+are dominant in the market now.
+Table 1 shows the advantages and disadvantages of ICEVs.
+The disadvantages of ICEVs might be a big problem in the future of the transportation sector.
+This was the reason to look for some alternatives. EVs appeared as a promising solution to some of
+these disadvantages.
+Table 1. Advantages and disadvantages of internal combustion engine vehicles (ICEVs).
+Advantages
+Disadvantages
+Long range
+Low eﬃciency (15 to 35%)
+Fast refueling
+No regenerative braking
+Low cost per unit of power
+Pollution due to exhaust gases
+Noise
+EVs show many beneﬁts compared with ICEVs but few challenges must be faced to increase EVs
+adoption. Table 2 shows both the beneﬁts and challenges of EVs [29,31]. Because both traditional
+vehicles and EVs have their strengths and weaknesses, hybrid vehicles (i.e., HEVs and PHEVs) with
+several conﬁgurations appeared, which try to combine the strengths of both types and avoid weaknesses.
+Energies 2020, 13, 4675
+6 of 34
+Table 2. Beneﬁts and challenges of EVs.
+Beneﬁts
+Challenges
+Emissions are localized at power stations and not in cities
+which improves citizens’ health
+Limited electric range
+High eﬃciency because of high electric motor eﬃciency
+Limited number of charging stations and long charging
+(refueling) time
+Low (for PHEV) or no emissions (for BEV)
+Negative impacts on the power grid if uncontrolled charging
+is used
+Fuel or energy independence from countries which
+produce fuel
+Consumer acceptance
+Simple transmission, fewer moving parts and low maintenance
+High prices
+Less noise pollution
+Battery low energy density
+Provide electrical services to the power system and helps the
+RESs integration.
+Expensive battery and needs replacement after few years
+2.4. Electric Vehicles Charging Technologies
+EVs charging can be classiﬁed into three main technologies: conductive charging, wireless
+(i.e., contactless) charging (WC), and battery swapping. Conductive charging is the simplest and the
+currently used charging method. For conductive charging, there is physical contact (i.e., cable) between
+the power supply and battery but for WC there is no physical contact. WC and battery swapping
+are not widely used like conductive charging and still under study and development. The following
+subsections will provide more details about these technologies. Figure 2 presents classiﬁcation of
+diﬀerent charging technologies.
+ 
+Figure 2. Classiﬁcation of EVs charging technologies.
+2.4.1. Conductive Charging
+EV battery chargers have a signiﬁcant responsibility in the advancement of EVs because the
+EVs adoption and social acceptance depends on the eﬀortless access to charging stations or street
+chargers. Several topologies were presented for single phase and three phase EV chargers [32,33].
+It consists of AC/DC converter, power factor correction elements, and DC/DC converter as shown
+in Figure 3. Charger systems are classiﬁed to on-board (i.e., inside vehicle for slow charging) and
+oﬀ-board (i.e., outside vehicle for fast charging). Moreover, they can be classiﬁed to unidirectional or
+Energies 2020, 13, 4675
+7 of 34
+bidirectional chargers [34]. Unidirectional charging has simple charging hardware and allows power
+ﬂow from grid to EV only. Bidirectional charging allows power ﬂow from the grid to EV and can inject
+power from the EV battery to the grid, building, or home.
+Figure 3. Onboard EV charger components.
+Availability and advancement of EV charging infrastructure can decrease the required onboard
+energy storage and decrease the range anxiety of EV owners. According to the Society of Automotive
+Engineers (SAE) Standard J1772 [35], there are three charging levels. Most of the EV owners are
+expected to charge at home overnight according to the Electric Power Research Institute (EPRI) so
+Level 1 and Level 2 chargers will be the primary option [36], while level 3 will be used for commercial
+charging stations.
+•
+Level 1 Charging
+This is the slowest charging way and the simplest because no additional infrastructure is needed,
+and any wall outlet can be used. In the US, a standard 120 V/15 A wall outlet is used for Level 1. It is
+available only as an on-board charger. Although its cost is less than other charging levels, the EV needs
+a long time to be fully charged. Due to its low power rating, this charging level has the lowest impacts
+on distribution systems.
+•
+Level 2 Charging
+Level 2 charging uses 208 V or 240 V at currents up to 80 A, and 19.2 kW charging power.
+EV owners prefer Level 2 compared with Level 1 because of its shorter charging time. It may need
+dedicated electric vehicle supply equipment (EVSE) installation for public or home charging. Some EVs
+like Nissan Leaf have an on-board charger of this charging level.
+•
+Level 3 Charging
+Level 3 is for fast charging and it operates as a commercial refueling station (i.e., less than 1-h
+charging time) similar to the conventional gas station which can be installed at city main roads and
+highways. It is supplied from a three phase circuit with 480V or higher voltages. It is available only
+as an oﬀ-board charger because the charging power is high and may exceed 100 kW. It is clear that
+level 3 charging is not suitable for home charging. It has a high installation cost, and this represents
+a potential issue. It is expected that public chargers will use Level 2 or Level 3 for fast charging in
+shopping centers, parking lots, restaurants, hotels, theaters, etc. High charging power represents an
+advantage from charging time point of view, but it may generate a peak demand and overload the
+distribution network equipment in addition high installation cost.
+Energies 2020, 13, 4675
+8 of 34
+2.4.2. Wireless Charging (WC)
+WC enables EVs charging without physical contact or cable between the power supply and
+battery. Advancement of WC will reduce the required onboard battery capacity which will decrease
+EVs price and mass, which will result in reduction of EVs energy consumption. WC may become a
+future alternative for traditional conductive charging. WC has a potential to be used for charging
+electric bus batteries [37]. It can operate at diﬀerent voltages (level 1, 2, and 3). The highest eﬃciency
+recorded for WC is 90% [38]. There are three main technologies of WCS: inductive, resonant inductive,
+and capacitive WC [39,40].
+Inductive wireless charging (IWC) will be explained to provide the basic idea of this technology.
+The IWC contains AC/DC converter that converts AC power supplied from electricity grid to DC.
+Then, it is converted again to AC power with high frequency fed to transmitting (i.e., primary) coil.
+All these components are in the street underground. The EV contains receiving (i.e., secondary) coil
+that receives power from transmitting coil by electromagnetic induction through the air gap. Then the
+AC power is converted to DC by AC/DC converter and charge the battery [41]. A simpliﬁed diagram
+of IWC that explains the main concept is shown in Figure 4. IWC can be classiﬁed into static inductive
+charging and dynamic inductive charging. For static inductive charging, EV must be stationary during
+charging. However, dynamic inductive charging allows WC while EV is moving [42].
+Figure 4. A simpliﬁed diagram of inductive charging.
+Current WC is designed for unidirectional power ﬂow from grid to vehicle, but future development
+of this technology is to enable EVs to discharge power to the grid wirelessly to provide electrical
+services. The advantages of this technology are electrical safety, no cables needed, and user convenience.
+The challenges of this technology are the high infrastructure cost compared to conductive charging,
+and low power transfer eﬃciency between coils [40].
+2.4.3. Battery Swapping
+Battery swapping station (BSS) is a charging station at which the empty EV battery will be
+replaced by a fully charged battery in few minutes [43]. Battery swapping may be used with electric
+buses that have a high capacity battery which will take a long time to be charged by traditional
+conductive charging. This technology requires a large stock of batteries owned by the BSS or a third
+party and rented to EV owner. BSS contains a distribution transformer, AC/DC converters to charge
+the batteries, batteries, and battery swapping equipment [44,45]. Some studies considered that BSS
+can use bidirectional chargers to provide electrical services by V2G mode [46,47]. The challenges of
+this technology are battery standardization, high infrastructure cost, and large space for BSS. In 2013,
+Tesla company revealed a battery swapping system that can swap the battery in 90 s [48].
+Energies 2020, 13, 4675
+9 of 34
+3. Charging and Discharging Methods
+Charging methods can be classiﬁed into two main categories, unidirectional and bidirectional
+charging. In unidirectional charging the energy ﬂow is only from the grid to EV (i.e., uncontrolled
+charging, delayed charging, and controlled charging). In bidirectional charging, energy can ﬂow from
+the grid to EV and from EV to the grid or loads as buildings, or homes (i.e., V2G, V2B, and V2H).
+Figure 5 presents the classiﬁcation of diﬀerent charging and discharging methods. Figure 6 shows
+how the total power demand proﬁle of distribution system will change with diﬀerent EV charging or
+discharging methods [10].
+ 
+Figure 5. Classiﬁcation of diﬀerent charging and discharging methods.
+Figure 6. Total power demand proﬁle with diﬀerent charging and discharging methods. (a) Uncontrolled
+charging; (b) Delayed Charging; (c) Controlled Charging; and (d) V2G, V2B, and V2H.
+3.1. Uncontrolled Charging
+This is the simplest method to charge EVs and the current used way. The EV is plugged in for
+charging at the maximum power rating of EV charger until the EV battery is fully charged (i.e., state
+Energies 2020, 13, 4675
+10 of 34
+of charge (SoC) is 100%), similar to any electric device with a battery (i.e., laptop, smart phone, etc.).
+Several studies concluded that uncontrolled charging of EVs may result in severe negative impacts on
+distribution networks such as increase in peak load demand, overloading of transformers and cables
+and shorten their life, increase voltage drop, increase system unbalance due to single phase chargers,
+increase power losses, and increase harmonic distortion [49,50]. Moreover, this type of charging limits
+the EVs acceptable penetration level, because EV owners charge their vehicles when arriving home
+from work, which usually coincides with peak hours as shown in Figure 6a. The ﬁgure shows the
+total power demand of residential consumers during the day [51] before connecting EVs (in grey) and
+how the total power demand will change when EVs are connected to the distribution network for
+charging. Furthermore, it will accelerate the need for infrastructure upgrade. This charging method is
+also known as dumb charging, uncoordinated charging, and unregulated charging.
+3.2. Delayed Charging
+The severe impacts of uncontrolled charging can be alleviated with the use of delayed charging.
+In this case, the utility has diﬀerent electricity prices during the day with low price at oﬀpeak time
+(i.e., time utility wants EV owners to charge at) and high price at peak time (i.e., time utility does not
+want EV owners to charge at). This method controls the charging time and not the charging power
+(i.e., EV charge at charger maximum power rating). With the optimal design of electricity tariﬀprices
+during the day, it can work as an incentive for EV owners to charge their vehicles on low price times
+which maximize both utility (i.e., distribution system operator (DSO) or distribution company) and EV
+owners beneﬁt and result in valley ﬁlling as shown in Figure 6b. Although this method is a very simple
+technique to ﬂatten the load proﬁle and shift the load to oﬀpeak time, non-optimal design of electricity
+price, can incentivize a large number of EV owners to charge at oﬀpeak times, which may result in a
+second peak especially at the beginning of oﬀpeak time. Moreover, this method ignores EV owners’
+preferences and needs to charge their EVs at diﬀerent times during the day. This charging method is
+also known as oﬀpeak charging, and indirect controlled charging with time of use pricing [52,53].
+3.3. Controlled Charging
+Although delayed charging has less impacts on distribution networks than uncontrolled charging,
+it has limitations. These limitations can be surpassed using controlled charging. This method controls
+the charging time and charging power of EV depending on some distribution network parameters
+like total power demand, transformer loading, voltage stability, power losses, etc., or to minimize the
+charging cost. In this technique, EV acts as a controllable load. Various studies proposed controlled
+charging algorithms for maximizing EV owner beneﬁt by charging cost reduction and maximize utility
+beneﬁt by distribution network stress and losses reduction, enhancement of power quality, and shifting
+the EV load to oﬀpeak hours which result in valley ﬁlling [54,55] as shown in Figure 6c. This charging
+method is also known as coordinated charging and smart charging.
+Controlled charging can be classiﬁed as centralized, decentralized, and autonomous control
+architecture [56]. In centralized control, a central controller collects data such as electricity prices,
+system loading condition, EVs status, and owner preferences; based on this data the controller
+determines the set points of controlled EVs. Although centralized charging control usually results
+in optimal use of the system and enables EVs to participate in many electrical services, it has few
+disadvantages. There are privacy issues because all users data can be accessed by the central controller,
+the need for expensive two way communication infrastructure, large data amount must be processed,
+which is a high computational burden, any problem in the central controller or loss of communication
+can lead to severe consequences, and a large number of messages should be communicated in a short
+period which can result in communication issues. Moreover, most of the utility companies do not use
+real time pricing, which makes this method inapplicable currently [56].
+Energies 2020, 13, 4675
+11 of 34
+In decentralized charging control, the control entity (i.e., DSO or aggregator) sends signals to
+EVs like electricity prices to incentivize them to take a speciﬁc action such as reducing their charging
+power or stop charging at peak hours. In this case no need to send EVs private information to the
+control entity. Although decentralized control methods need a cheaper processing and communication
+infrastructure compared with centralized control methods, they have few disadvantages. The optimal
+utilization of the system is not ensured, their ability to participate in ancillary service markets is limited
+and they are vulnerable to variations in customers behavior [56].
+In autonomous charging control, the charging power is regulated based on local inputs such
+as voltage and battery SoC without any communication between EVs and control entity [57,58].
+Usually, autonomous charging control is classiﬁed as decentralized control with no communication.
+Although this control architecture is the single option for distribution systems with no communication
+facilities and it can enable the integration of a larger number of EVs to the power grid in its current status,
+it has few disadvantages. Their ability to participate in ancillary service markets is limited, they are
+vulnerable to variations in customers behavior and the system cannot be operated optimally [56].
+3.4. Vehicle to Grid (V2G)
+This refers to the capability of EVs to supply power to the distribution network and operate as
+distributed energy storage devices. Bidirectional EV chargers are used to enable the electric power to
+ﬂow in both directions from grid to vehicle (i.e., charging) and from vehicle to grid (i.e., discharging).
+When there is surplus electric energy (oﬀ-peak times) EVs will charge, which is called grid to vehicle
+(G2V) mode, and when there is a deﬁcit in electric energy and consumption is higher than generation,
+EVs will supply power to the distribution network and this enhances the system reliability and
+eﬃciency [59]. So EVs can be seen by utilities as load and source. Because EV power and energy
+are limited and approximately have no eﬀect on the power system, usually an aggregator is the
+responsible for aggregating EVs power or energy, which are located in geographical area to participate
+in electrical services.
+The interaction in this case is between EV and power system management organization like
+DSO, which has to operate the power system in a reliable way. V2G can provide many grid services
+such as frequency regulation, spinning reserve, enabling the integration of more RESs, and peak load
+shaving and valley ﬁlling [60] as shown in Figure 6d. Other beneﬁts of V2G is generating revenues for
+EV owners, and decrease emission and operating cost if grid services were provided by traditional
+nonrenewable generation [60]. Although this is a very promising technology regarding providing
+electrical services to the power system, it has many challenges and barriers. This technology is very
+complex and needs many infrastructure changes because it needs bidirectional chargers and continuous
+two-way communication between EVs and system operator or aggregator. Moreover, it is expected that
+continuous charge and discharge of EV battery may lead to battery degradation and shortening its life.
+In contrast, new studies concluded that EV can participate in V2G without battery degradation [61].
+3.5. Vehicle to Building (V2B)
+V2B is similar to V2G but in V2B there is no communication between the vehicle and the grid,
+and it only communicates with the building so the energy stored in the EV battery can be used to
+supply the building loads only. The use of V2B mode can be very eﬀective during peak load times and
+outage conditions. EVs are used as an energy storage device and operates in two modes: G2V and
+V2B. It operates in a G2V mode to charge the battery at low cost when the grid is lightly loaded and
+there is surplus electric power generation. It operates in a V2B mode to supply the building loads
+when the electricity price is high at peak hours [62]. By doing this V2B is providing peak shaving
+and valley ﬁlling which is utility beneﬁt and reduce building expenses by discharge at periods with
+high electricity prices and reduce building demand from the grid. This method is simpler than V2G
+as it operates behind the building meter, but it provides less electrical services to the power system.
+V2B involves one building (i.e., many homes) and many EVs.
+Energies 2020, 13, 4675
+12 of 34
+3.6. Vehicle to Home (V2H)
+This is very similar to V2B but in this case, only one home is involved and not a whole building
+as in V2B and only one EV. Normally EV absorbs power from home and can supply power to home
+when needed. It needs a simple architecture compared to V2G and V2B and can provide less electrical
+services to the power system compared to them. It can ﬂatten the house daily load proﬁle and reduce
+house consumption during peak hours with high electricity prices. Local energy production from
+photovoltaic (PV) or small wind generation can be eﬀectively used by storing the excess generation in
+EV battery and use it when needed [63,64].
+4. Negative Impacts of Electric Vehicles on Electric Power Systems
+Uncontrolled charging of EVs with high penetration levels is expected to introduce unwanted
+negative impacts on the power system. The possible negative impacts are the impact due to increase of
+peak demand, voltage deviation from the acceptable limits, phase unbalance due to the single-phase
+chargers, harmonics injection, overloading of the power system equipment, and increase of power
+system power losses [65]. A large number of studies have investigated these impacts because the
+estimation of EVs charging impacts is based on several conditions [65] and have many uncertainties
+that must be considered and modeled properly in the study to accurately estimate the impact of EVs
+charging on the power systems, the main key variables are [66,67]:
+•
+EV battery charger
+Depending on the charging infrastructure and the EV model single phase or three phase chargers
+may be used for charging. Moreover, there are many power ratings for EVs chargers operating at
+diﬀerent voltage levels. So, the fast chargers are expected to increase the peak demand in a larger value
+compared with slow chargers.
+•
+Time
+The time of connecting the EVs for charging is not certain so it is unknown how many EVs
+may be charging at the same time and the probability that the EV charging time interferes with the
+peak demand time of the distribution networks. Some studies assume the charging start time of EVs,
+and other studies make surveys in a geographical area or a city to know the home arriving time of
+vehicles and model it as probability distribution.
+•
+Location
+The place at which an EV charge is random. EV owner may charge at home, friend’s home,
+street charger, or charging station. It may be diﬀerent from distribution network to another where are
+the charging locations and what are the EV charger type (i.e., private or commercial chargers).
+•
+Battery capacity
+There are a wide range of EV batteries capacity. PHEV usually contains a small battery capacity
+while BEV contains higher battery capacity. EVs with high battery capacity will draw a larger amount
+of energy from the power grid.
+•
+Battery SoC
+The battery SoC at the plug-in instant is stochastic. Many studies assume the SoC and others
+consider it as a probability distribution.
+Energies 2020, 13, 4675
+13 of 34
+•
+Penetration level
+EVs still have a very small market share which will increase quickly for few countries like Norway
+and slowly for many other countries. Therefore, many studies considered diﬀerent EVs penetration
+levels ranging from 10% to 100%.
+•
+Distribution system status
+There are many diﬀerences between distribution systems in terms of structure (i.e., radial or
+ring), equipment loading condition before connecting EVs, voltage level (i.e., medium voltage or low
+voltage), voltage proﬁle, daily load proﬁle of loads, etc.
+Therefore, numerous studies were executed to assess the impacts of EVs charging on the power
+system. Most of the studies focus on the distribution network at which EVs charging occurs, because the
+most severe impacts are expected to occur at the distribution level. Classiﬁcation of positive and
+negative impacts of EVs charging/discharging on electric power system can be seen in Figure 7 and
+they are explained in the following sections.
+ 
+Figure 7. Classiﬁcation of EVs charging impacts on electric power systems.
+4.1. Impacts Due to Increase in Peak Demand
+Various studies have been performed for assessment of EVs charging impact on the peak demand
+and load proﬁle on distribution systems. Many distribution networks in diﬀerent countries and with
+diﬀerent topologies and characteristics were chosen to conduct these studies. In [68], the peak demand
+increased by 53% when uncontrolled EVs charging was used with 30% penetration level. In another
+study [69], with only 10% penetration level of uncontrolled EVs charging in residential network,
+the peak demand increased signiﬁcantly. In [70], the eﬀect of charging light duty vehicles up to 100%
+penetration level on system peak demand was investigated. For 100% penetration level, uncontrolled
+charging resulted in a high increase in peak demand, which must be minimized by delayed charging.
+In [71], it was found that EV rapid charging at peak hours will result in a signiﬁcant rise in peak
+demand and equipment limits were exceeded even with very small penetration levels. However, by the
+use of slow charging at oﬀpeak hours, distribution network could integrate up to 50% penetration
+level without violating equipment limits.
+Energies 2020, 13, 4675
+14 of 34
+In [72], the impact of uncontrolled charging of EVs on total power demand for three distribution
+networks (i.e., urban, suburban, and rural) with diﬀerent capacities were evaluated. The study
+considered penetration levels up to 25%. For the highest penetration level, the peak demand increased
+by 9% for both urban and rural networks and 11% for suburban network. This increase made the rural
+network exceed the maximum capacity limit while urban and suburban did not exceed the capacity
+limit. In [73], it was found that uncontrolled charging increased the peak demand. The study proposed
+a demand response method to control EVs demand and other ﬂexible home devices. This method
+enabled the integration of EVs without increase in peak demand from the base case (i.e., without EVs).
+In a recent study [74], the impacts of uncontrolled EVs charging on Great Britain power system
+was investigated. The study also considered how controlled charging can mitigate these impacts. For a
+100% penetration level, it was found that the peak demand will increase by 8 GW at generation and
+transmission level. Moreover, the results showed that controlled charging can signiﬁcantly reduce the
+increase in peak demand and eliminate the need for new generation infrastructure. At the distribution
+level 100% penetration level will require 28% upgrades at distribution network. Controlled charging
+can reduce the distribution network upgrade requirements to only 9%. Another interesting conclusion
+in this study is that load proﬁle at distribution level and load proﬁle at transmission level cannot be
+ﬂattened at the same time using controlled charging. For instance, ﬂattening the load at transmission
+level (i.e., national demand) will require 19% upgrades at the distribution level. Moreover, ﬂattening the
+load at distribution level will result in 6 GW increase in national demand.
+In [75,76], it was concluded that the increase in peak demand can be crucially mitigated by the
+use of optimized charging and time of use (ToU) charging. A study on the Estonian grid [77] with
+30% penetration level of the passenger’ cars available was conducted and the results showed an
+increase in the peak load with 5% for uncontrolled charging and 4% increase for controlled charging.
+Section 5.3 gives more details on how controlled charging can ﬂatten the load proﬁle and how controlled
+charging/discharging can cut the peak demand (i.e., peak shaving).
+From the previous studies, it is clear that large integration of EVs charging in uncontrolled manner
+may lead to a signiﬁcant increase in peak demand. This increase in peak demand will result in higher
+operation costs because expensive generation must be operated at peak hours for short duration to
+supply peak load. In addition, infrastructure upgrade is required if the peak demand is higher than
+components capacity at generation, transmission, or distribution levels. Moreover, the use of delayed
+charging and controlled charging is eﬀective in minimizing peak demand increase due to EVs demand
+and the accompanied negative impacts; this can enable higher EVs penetration.
+4.2. Voltage Instability and Phase Unbalance
+Voltage instability represents a challenging issue and can result in system disruptions [78].
+The reason for that is the operation at high load demand and near the stability limit. The grid voltage
+stability is crucially aﬀected by the characteristics of the load. EVs load characteristics are diﬀerent
+from the conventional loads (i.e., residential, industrial, and commercial) characteristics and the earlier
+estimation of its power and energy demands are diﬃcult. In addition, the EVs consume more power in
+a short time to fully charge the battery. Furthermore, single phase EVs chargers may increase phase
+unbalance at distribution network. Phase unbalance results in unwanted negative eﬀects at distribution
+network operation and connected loads and should remain in the acceptable limits.
+Numerous studies have been executed to evaluate the impacts of EVs charging on voltage
+instability, voltage deviation, and phase unbalance. In [79], the voltage stability was investigated in a
+study implemented in the Institute of Electrical and Electronics Engineers (IEEE) 43 bus distribution
+system. The results showed that voltage stability of distribution network is highly reduced by EVs fast
+charging. The impact of uncontrolled charging on voltage deviation at diﬀerent daily durations was
+assessed in [80]. Obtained results showed a large increase in voltage deviation which was close to
+exceeding the acceptable limits especially if EVs were charging at peak period. The study proposed
+stochastic programming strategies to minimize voltage deviation. In [72], the impact of uncontrolled
+Energies 2020, 13, 4675
+15 of 34
+charging of EVs on voltage drop for three distribution networks (i.e., urban, suburban, and rural) was
+estimated. The study considered penetration levels up to 25%. For rural network which has long
+feeders, higher voltage drop was recorded due to EVs charging which fosters the need for voltage
+regulation devices. The impact of uncontrolled charging of EVs on voltage deviation in primary and
+secondary distribution systems was examined in [81]. The study considered diﬀerent penetration levels
+(i.e., 30% and 50%), diﬀerent EVs types (i.e., BEV and PHEV), and diﬀerent charging levels (i.e., level 1
+and level 2). Results showed no voltage limits violation at any node of primary distribution system.
+However, voltage limits violations were recorded in the secondary system. Moreover, it showed that
+BEV caused more voltage drop than PHEV due to its higher battery capacity and level 2 charging
+caused more voltage drop than level 1. In another work [82], the eﬀect of large-scale integration
+of EVs with high power charging in IEEE 39 bus distribution system and how the distribution
+network reliability was improved by optimal charging of EVs was investigated. Another method for
+reducing the voltage instability was proposed in [83]; the method is based on voltage control by the
+tap-changing transformer.
+In [84], the impact on voltage unbalance due to uneven EVs distribution on the three phases was
+investigated. The study considered two scenarios for EVs distribution on phases. For scenario A,
+50% of EVs are connected to phase a, 30% to phase b, and 20% to phase c. For scenario B, 80% of EVs
+were connected to phase a, 20% to phase b, and 0% to phase c. For scenario A, the voltage unbalance
+factor (VUF) did not violate the limits until 50% penetration level. However, for scenario B, the VUF
+reached the limits at 25% penetration level. Another study [85] investigated the impact of single phase
+EVs charging (i.e., G2V) and discharging (i.e., V2G) on voltage unbalance of low voltage distribution
+network. The study considered many cases and results showed that in some cases VUF exceeded the
+limit for both charging and discharging modes. In [86] a signiﬁcant phase unbalance occurs due to
+the EVs charging with single phase chargers at level 1 at the residential network which results from
+the unequal distribution of EVs chargers in the three phases. However, a small impact on voltage
+and current unbalance was observed due to EVs charging in [87]. It should be mentioned that by
+using controlled charging and discharging of EVs with considering VUF minimization, the voltage
+unbalance at distribution network can be minimized. More details are provided in Section 5.4.
+Previous studies showed that usually low EVs penetration levels can have a small impact on
+voltage values even if uncontrolled charging was used. However, high EVs penetration levels can
+cause high voltage drop, and voltage value may exceed the acceptable limits especially at the end
+of long feeders (i.e., rural network), which will require the installation of voltage regulation devices.
+Studies showed that secondary distribution networks have a higher probability of exceeding voltage
+limits than primary distribution networks. Moreover, phase unbalance represents a challenging issue
+since most EVs are expected to be charged by single phase private chargers. Very small EVs penetration
+levels can cause small phase unbalance. However, high EVs penetration levels and high uneven
+distribution of chargers on the three phases may result in VUF higher than acceptable limits.
+4.3. Harmonics Distortion
+Power quality problems may arise due to EVs charging. Because power electronic devices
+are used in EV chargers, so high EVs integration can aﬀect the power network’s power quality.
+Harmonics injected by EV chargers into the power grid will lead to negative eﬀects on electric power
+system components which are designed to be supplied by pure sinusoidal waveform and increase
+system losses. Few studies found that EV chargers had a non-signiﬁcant eﬀect on harmonic distortion.
+For instance, in [88], a comprehensive harmonic study was implemented using the Monte Carlo method
+and the results showed a minor impact of harmonics in the distribution network. Another study [89],
+found that commercial EV chargers resulted in a small increase in the total harmonic distortion of
+voltage (THDv), and it was less than 0.8%.
+Energies 2020, 13, 4675
+16 of 34
+In contrast, many studies concluded that EVs charging had a large impact on the distribution
+system. In [90], the THDv increased to 11.4% due to uncontrolled rapid charging and this value
+exceeded the limit of 8% based on EN 50,160 standard and a solution to the harmonic problem was
+proposed by using the control of PV inverter as an active ﬁlter. In [91], the impact of EVs charging with
+slow and fast charger on total harmonic distortion (THD) was assessed for diﬀerent EVs models. A high
+total harmonic distortion of current (THDi) was recorded for fast charging between 12% to 24%. In [92],
+the impact of traditional EV charger on the quality of system voltage and drawn current was evaluated.
+Traditional charger caused very high THD. The authors proposed a smart charger that draws sinusoidal
+current and has a unity power factor. The smart charger signiﬁcantly reduced THD compared with
+traditional charger. The negative eﬀects of EV home chargers on distribution network power quality
+and transformer life were studied in [93]. The study found a quadratic relation between THDi and
+life consumption of the transformer. Moreover, the study concluded that THDi should not be more
+than 25 to 30% to have acceptable increase in life consumption of the transformer. In [94], the impact
+of EV chargers’ current harmonics on distribution system capacity was studied. Results showed
+that the 10 kV cable was overloaded at 27.25% penetration level when current harmonics due to
+EV chargers was considered. However, the cable was overloaded at 30.74% penetration level when
+current harmonics due to EV chargers was neglected. For harmonics reduction from EVs integration,
+ﬁlters must be added to the EV chargers.
+Only a few studies found that EV chargers harmonics result in a minor impact in the distribution
+network. Most of the studies showed that traditional EV chargers can cause unacceptable harmonics
+values. These high harmonics will result in decreasing the life cycle of distribution network components
+(i.e., transformers and cables). However, by proper design of EV charger circuits, control strategy,
+and ﬁlters integrated into the charger circuit, the charger harmonics can be alleviated signiﬁcantly.
+More details can be found in Section 5.4.
+4.4. Overloading of Distribution Network Components
+The high EVs energy demand requires a large amount of electric energy to be transmitted from
+the generation stations to the distribution networks. The distribution networks’ equipment such as
+transformers and cables may get overloaded due to the new EVs load and this will lead to stress these
+components and reduce their lifespan and foster the need for infrastructure upgrade. Several researches
+were executed to analyze the impacts of EVs charging on distribution system components. In [95],
+the distribution transformer aging due to uncontrolled charging of EVs with level 1 and 2 charging
+power was investigated. The results showed that level 2 charging has a higher aging impact on the
+transformer in comparison with level 1 charging. The impacts of EVs charging on transformer and
+underground cable were assessed in [96] for low and high penetration levels (i.e., 12.5% and 70%).
+The transformer and cable were overloaded in both penetration levels. The impact of uncontrolled
+charging of EVs on distribution transformers with 25 kVA and 50 kVA power rating was examined
+in [81]. The study considered diﬀerent penetration levels (i.e., 30% and 50%), diﬀerent EVs types
+(i.e., BEV and PHEV), and diﬀerent charging levels (i.e., level 1 and level 2). Results showed that
+50% penetration level resulted in overloading 50% of the 25 kVA transformers and 35% of the 50 kVA
+transformers. Furthermore, BEV with level 2 charging caused 10% increase in the number of overloaded
+transformers compared with PHEV with level 1 charging.
+In [72], the impact of uncontrolled charging of EVs on the loading of secondary transformers
+installed in three distribution networks (i.e., urban, suburban, and rural) with diﬀerent capacities
+was executed. The study considered penetration levels up to 25%. The study counted the number of
+transformers overloaded above 20%. EVs charging resulted in increasing the number of transformers
+overloaded above 20% for suburban area, while urban and rural areas did not have high overloading
+percentages. The impact of uncontrolled charging on distribution networks transformers and cables
+was investigated in [97]. Results showed a large increase in the number of overloaded transformers
+and cables. The number of overloaded transformers and cables decreased by 25% and 8%, respectively,
+Energies 2020, 13, 4675
+17 of 34
+when controlled charging was used. In [98], it was found that the presence of EVs will lead to reducing
+life duration of distribution transformer. In [99], it was concluded that the uncontrolled charging of
+EVs will lead to aging of 25 kVA distribution transformer. Moreover, it was found that transformer
+aging can be reduced using controlled charging strategies.
+Another study [100], concluded that uncontrolled level 1 EVs charging has insigniﬁcant impact
+on transformer life but the massive penetration of EVs may have a severe eﬀect on transformer
+lifespan.
+The transformer lifespan can be enhanced by using oﬀ-peak EV charging and load
+management [95,100,101]. In [102] the cable loading was examined for EVs peak charging hours.
+The results demonstrate that the cable can handle up to 25% penetration level for slow charging and
+up to 15% penetration level for fast charging and cannot handle massive EVs penetration easily.
+The high energy demand of EVs will increase the loading at diﬀerent parts of the power system
+(i.e., generation, transmission, and distribution). Distribution level is highly aﬀected by EVs charging
+compared to transmission and generation levels, and most of the studies focused on the impacts of EVs
+charging on distribution network components. The studies showed that the acceptable EVs penetration
+level before overloading of network components varies depending on the network components’
+capacity and their loading condition before connecting EVs. Studies concluded that the uncontrolled
+charging of EVs result in overloading of many transformers and cables at the distribution network and
+can result in reducing their lifespan and requires components upgrade which represents economical
+challenge to electric utilities. Results showed that many distribution networks can only allow 10%
+penetration level before overloading if level 2 charging was used. The network can handle higher
+penetration levels if level 1 slow charging was used. Using proper charging and discharging methods
+(i.e., delayed charging, controlled charging, V2G, V2B, and V2H), distribution networks can integrate
+higher EVs penetration levels before they reach their capacity limits. More details can be found in
+Section 5.3.
+4.5. Increase in Power Losses
+Extra power demand represented in EVs charging will lead to higher currents ﬂowing and extra
+power losses in diﬀerent system components, such as generators, transformers, and cables, which is
+the main concern for utilities. Various studies were performed to examine the EVs charging impact on
+system losses. In [103], the impact of uncontrolled charging of EVs on two large scale distribution
+system was executed under three penetration levels (i.e., 35%, 51%, and 62%). Uncontrolled charging
+resulted in a large increase in energy losses and required investment cost. Losses and investment costs
+reduced when delayed charging or controlled charging were used. The impact of uncontrolled charging
+on power losses at diﬀerent daily durations was assessed in [80]. Obtained results showed a large
+increase in power losses especially if EVs were charging at peak period. The study proposed stochastic
+programming strategies to minimize power losses. In [104], a study examined the EV charging impact
+on a Danish distribution network. The obtained results showed that for uncontrolled charging with
+50% penetration level the grid losses increased by 40% and increased only 10% for controlled charging.
+In [105], the impact of EVs charging on distribution transformer power losses was investigated.
+It was found that for penetration levels ranging from 2% to 40%, the transformer losses increased to more
+than 300% mainly due to windings copper losses increase. The increase in power losses at the IEEE 33
+bus distribution system due to EVs fast charging station was evaluated in [106]. The study investigated
+many cases by changing the charging station bus and the charging station power consumption. It was
+found that installing charging stations at weak buses (i.e., far from the main transformer) increased
+system power losses. Moreover, the power losses could be reduced by distributing charging station
+load at two buses instead of one bus. In [107], the increase in energy losses of a distribution network
+due to EVs charging was examined. The distribution network supplies residential and commercial
+loads and located on a Korean island. The results showed that daily energy losses increased by 66% for
+40% penetration level.
+Energies 2020, 13, 4675
+18 of 34
+Previous studies focused on assessing the impact of uncontrolled EVs charging on the power
+losses at distribution networks. The studies concluded that uncontrolled EVs charging resulted in a
+high increase in distribution network power losses. Using proper charging and discharging methods
+(i.e., delayed charging, controlled charging, V2G, V2B, and V2H), power losses due to EVs charging
+can be reduced signiﬁcantly. Additionally, the installation of distributed generation (DG) near the
+charging location can decrease the energy supplied from the grid, and hence reduce the power losses.
+5. Positive Impacts of Electric Vehicles on Electric Power Systems
+EVs are parked for most of the daytime [108], and they are connected to the charger for a longer
+duration than required recharging duration. Therefore, EV battery can be used to provide grid services
+and gain revenues for EV owners by injecting power to the grid to keep demand–supply balance or by
+controlling the charging time and power to reduce the charging cost and electricity bill. Many studies
+showed that controlled EVs charging can improve power system eﬃciency, reduce operation cost,
+and minimize RESs curtailment. Moreover, EVs controlled discharging can provide additional beneﬁts
+and electrical services [109]. EVs can provide short time scale electrical services due to the fast
+response of battery chargers such as primary frequency control (PFC), medium time scale electrical
+services, such as secondary frequency control and long time scale electrical services, such as congestion
+management and minimization of power losses due to the high battery capacity [110]. The focus in
+reviewing the literature will be in operational aspects and services provided by EVs and not in the
+optimization algorithms and control methods used due to the broad spectrum of approaches used in
+these studies [111].
+5.1. Frequency Regulation
+Power system frequency should be maintained at nominal value (i.e., 50 or 60 Hz) for normal
+operation. It is considered an important indicator of active power supply–demand balance. In normal
+operation, the power imbalance occurs due to continuous load variation or ﬂuctuation of RESs
+generation that depend on weather conditions. In emergency conditions, the power imbalance occurs
+due to sudden outages of loads, transmission lines, or generating units. Failing to maintain frequency
+in the speciﬁed limits will result in load shedding in case of under frequency or disconnection of
+generating units in case of over frequency. In traditional power system, frequency regulation is achieved
+by synchronous generators in large power plants (e.g., hydro and thermal power plants) [112]. In future
+power systems, controllable loads like heat pumps and EVs will have a signiﬁcant role in frequency
+control [113]. EV batteries have a faster response compared to traditional generation units due to the
+fast response of EV power electronic interface (i.e., EV charger). Therefore, controlled charging and
+discharging of EVs can be an eﬀective option for frequency regulation. Moreover, frequency regulation
+is becoming more challenging due to the reduction of system inertia and increase of ﬂuctuation due to
+the increasing share of RESs with power electronic interface [114–116].
+The ability of available commercial EVs (i.e., Nissan Leaf) to provide PFC by only changing the
+charging power and with no V2G capability was tested experimentally in [117]. A small isolated
+power system with renewable generation was used as a test system. The results proved the technical
+feasibility of EVs to provide PFC with fast response time. In [118], the authors studied how EVs can
+participate in PFC in two ways. The ﬁrst is to switch oﬀEVs charging and the second way is to inject
+power to the grid in V2G mode. Another study [119] proposed a control method to provide PFC in
+three area power system by coordinating EVs charging and discharging while minimizing battery
+degradation cost. The eﬀectiveness of EVs to provide primary frequency regulation was tested in [120]
+for a small isolated power system containing wind turbines, diesel generators, and hydro generators.
+The study veriﬁed that EVs were very eﬀective in reducing frequency oscillation with a small change
+of EVs consumed energy and negligible variation of the required charging time. It also showed that
+EVs can enable more wind energy share while keeping normal operation.
+Energies 2020, 13, 4675
+19 of 34
+In [121], the authors studied two modes of EVs charging control for frequency regulation while
+considering EV owner diving behavior. The ﬁrst mode only controls the charging power and the
+second mode controls charging and discharging power. Results showed that EVs were eﬀective in
+reducing frequency ﬂuctuation. A coordinated control strategy between EV operating in V2G mode
+and traditional generation for load frequency control (LFC) was proposed in [122]. The proposed
+control strategy was tested on the Great Britain power system. The results showed the eﬀectiveness of
+the proposed strategy in improving frequency regulation and reduction of power mismatch. Moreover,
+due to EV participation, the traditional power generation output variations were reduced. The EVs
+ability to participate in LFC in a microgrid operating in isolated mode was investigated in [123].
+The microgrid contains both renewable and nonrenewable generation. The studies proved that EVs
+can enhance frequency stability in addition to reducing emissions from nonrenewable generation and
+increase microgrid operator proﬁt. In [124], EVs operating at V2G mode were used to provide LFC in a
+multi-area power system containing traditional nonrenewable generation (i.e., thermal, hydro, and gas
+turbines).
+Previous studies results proved the feasibility of using EVs to provide frequency regulation due to
+its fast response. Results showed that the use of EVs can achieve rapid control action in balancing the
+generated power and the power demand during load and source variations and the system frequency
+perturbation controlled by EVs is much lower than the other generation units. EVs can provide frequency
+control either by regulating charging power with no V2G capability or by regulating charging and
+discharging power (i.e., V2G capability). In the ﬁrst approach, frequency regulation can be achieved
+by only change the EVs charging power. This approach is simple, requires simple infrastructure,
+and have a limited eﬀect on battery degradation. In the second approach, frequency regulation is
+provided by controlling both charging and discharging power. This approach is more eﬀective than
+the ﬁrst approach. However, this approach is more complex, requires infrastructure upgrade (i.e.,
+ICT and bidirectional chargers), and aﬀect battery life cycle due to continuous charging and discharging.
+The studies showed that EVs are eﬀective in providing frequency regulation at traditional power
+systems containing only nonrenewable generation. It resulted in reducing frequency ﬂuctuation and
+reducing the variation of generation units output power. Furthermore, it is eﬀective when there
+is a renewable generation installed in traditional power systems. It can reduce ﬂuctuations due to
+intermittent renewable generation, enable the integration of more renewable generation, and reduce
+curtailment of renewable generation production. Moreover, EVs proved their eﬀectiveness in providing
+frequency regulation in microgrids with a high share of renewable generation. It can reduce frequency
+ﬂuctuation, increase microgrid proﬁt, reduce curtailment from renewable generation, and enable
+integrating high share of intermittent renewable generation while operating in acceptable limits.
+5.2. Voltage Regulation and Reactive Power Compensation
+The voltage at any point of the power system must be maintained within acceptable limits.
+Voltage is an indicator of the loading status of distribution system. Voltage is high if the network is
+lightly loaded and low if the network is highly loaded. Although the common problem in distribution
+system is exceeding the lower limit, excessive DG may cause voltage rise and exceeding the voltage
+upper limit. Keeping the voltage within normal values at distribution level, which usually has a
+radial structure, is a challenge especially for long feeders and may require voltage regulation devices.
+Violation of these limits will result in improper operation or damage to the connected loads and
+may lead to voltage instability. Voltage control can be achieved by active or reactive power control.
+Active power can be controlled by DGs, energy storage technologies, and controllable devices like
+EVs and heat pumps. Likewise, reactive power can be controlled by transformers on-load tap changer
+(OLTC), capacitors, and static var compensators.
+Many researchers studied voltage regulation by EVs active power control. An online controlled
+charging method was tested in [125].
+The objective was to maximize EV owners satisfaction
+while considering distribution network limits.
+The algorithm minimized voltage deviation,
+Energies 2020, 13, 4675
+20 of 34
+transformer loading, and power losses. In [126], a decentralized/autonomous controlled charging
+method was proposed. It regulates the charging power based on the local voltage and battery SoC.
+It charges at a high charging power if the voltage is normal and decrease the charging power or stop
+charging if the voltage is low. EVs with low SoC have a charging priority. The proposed method
+reduced the voltage drop and improved the voltage proﬁle compared to uncontrolled charging. In [127],
+an optimization algorithm was developed to provide peak shaving and valley ﬁlling in addition to
+improving voltage proﬁle by controlling the charging and discharging of EVs. In [128], a controlled
+EVs charging technique was used to solve the voltage rise issue resulted from excessive PV generation
+at distribution system.
+Another option for EVs based voltage regulation is by using capacitors in the DC link of the EV
+bidirectional chargers to supply reactive power. EV charger can do this even if the EV is not connected
+for charging. The ability of level 1 EV bidirectional charger to provide reactive power support was
+tested in [129]. The study showed that the DC link capacitor can provide reactive power support
+with no eﬀect on battery degradation. In [130] a direct voltage control method was used to enable EV
+charger at DC fast charging station to inject reactive power to the grid to regulate bus voltage and
+reduce system power losses. In [131], a strategy for voltage regulation at distribution network was
+proposed. It is based on the coordination of DG, OLTC, and EVs providing reactive power support
+by operating at V2G mode. The proposed algorithm was eﬀective in voltage regulation, minimizing
+OLTC operation times, and reduce the active power curtailment of DG. A limited number of studies
+investigated the use of EV chargers for reactive power compensation, which makes it a promising
+research area to be investigated in future research studies.
+From studies results, it can be concluded that uncontrolled charging of EVs can result in a higher
+voltage drop at distribution networks and voltage values exceeding the acceptable limits, especially in
+long feeders, and will require infrastructure upgrade by installing voltage regulation devices. However,
+using controlled charging and discharging methods the voltage at all parts of the distribution network
+can be kept within acceptable limits and daily voltage proﬁle can be improved without voltage
+regulation devices. Moreover, studies showed that the EV charger DC link capacitor is eﬀective in
+providing reactive power support and voltage regulation.
+5.3. Congestion Management
+Load demand varies during the day and usually have peak hours in the evening. During peak
+hours expensive generators should be turned on for few hours for supply–demand balance.
+Uncontrolled charging of EVs will result in enlarging the peak power demand, which results in
+operating expensive power generation in addition to transmission and distribution networks stress.
+If the installed generation capacity is less than the required demand at peak period, new power plants
+must be constructed. This issue can be eliminated or alleviated by using delayed charging, controlled
+charging, V2G, V2B, and V2H. Using delayed charging and controlled charging can shift EV charging
+to oﬀpeak hours, which results in valley ﬁlling as shown in Figure 6b,c. Using V2G, V2B, and V2H
+technology enables injecting power to the grid, building, or home at peak hours which results in peak
+shaving and charge at oﬀpeak hours which results in valley ﬁlling as shown in Figure 6d. The process
+of peak shaving and valley ﬁlling is called load ﬂattening or load leveling, which means reducing the
+diﬀerence between the maximum demand and the minimum demand during the day. By doing this
+congestion at the power system can be handled (i.e., congestion management).
+Delayed charging was proposed in [132], and compared to uncontrolled charging. The results
+indicated that delayed charging is eﬀective in reducing the stress of distribution system components,
+reducing voltage drop and power losses compared to uncontrolled charging.
+A decentralized
+controlled charging method for valley ﬁlling was proposed in [133]. This method needs simple
+unidirectional communication between the system operator and EV to broadcast day-ahead electricity
+prices. Based on the price, EV can autonomously control the charging behavior and charge at oﬀpeak
+period to reduce charging costs. This resulted in valley ﬁlling and reduction in generation cost by
+Energies 2020, 13, 4675
+21 of 34
+28% compared to uncontrolled charging. The impact of uncontrolled EVs charging on total power
+demand was investigated in [134]. Results showed that uncontrolled charging will increase peak
+demand. Delayed charging and controlled charging were proposed for alleviating the impact of
+uncontrolled charging. The results showed that the proposed methods were very eﬃcient in shifting
+the EVs charging from peak period and postponing any network upgrade.
+Another study showed that the German transmission system cannot handle large scale uncontrolled
+EV charging even with future expansion plans [135]. It also showed that V2G technology is eﬀective
+in reducing transmission system congestion and enhance grid stability. The eﬀectiveness of V2G in
+providing peak shaving and valley ﬁlling was proved in [136]. By allowing some of the EVs to inject
+power back to the grid at peak period resulted in reducing the original peak demand (i.e., peak shaving).
+By allowing EVs to charge at oﬀpeak period only resulted in valley ﬁlling. In [137], the integration
+of EVs in a weak isolated grid in a Spanish island was studied. The study proposed a strategy for
+coordinated charging and discharging of EVs. Results proved the eﬀectiveness of EVs in the eﬃcient
+management of the grid, in addition to ﬁlling the valley and shaving the peak demand.
+In [138], V2B was used in a building-integrated microgrid which contains EVs, battery storage,
+and PV. The objective was to reduce the peak load, which will decrease subscribed power rating
+and reducing the building electricity bill. The study showed that V2B can enable peak load shaving.
+By encouraging more buildings to have a similar management system it can reduce the peak load
+demand in the distribution system or even the whole grid. The eﬀectiveness of V2H in reducing home
+peak demand was tested in [64]. Results showed that V2H was very eﬀective in minimizing home
+peak demand and home electricity bills.
+Previous studies’ results showed that uncontrolled charging of EVs will result in an increase of
+peak demand at diﬀerent levels of the power system (i.e., generation, transmission, and distribution)
+and can overload many network components and will require components upgrade which represents
+high investment costs for system operators. A more cost-eﬀective solution to these issues is using
+proper charging methods. The studies proved that simple charging method like delayed charging,
+which only depends on variable electricity prices during the day, can shift most of the EVs load
+to oﬀ-peak hours by motivating EV owners to decrease the charging costs.
+Delayed charging
+can lead to reducing the increase in peak demand, reduce the number of overloaded components,
+postpone infrastructure upgrades, and valley ﬁlling. A more advanced charging method is controlled
+charging, where EVs can change their charging time and power depending on many variables such as
+electricity prices, load demand, components loading, grid constraints, etc., depending on the proposed
+control strategy. Controlled charging can lead to reduced charging costs, reduced increase in peak
+demand, reduction in the number of overloaded components, delay in network components upgrade,
+and valley ﬁlling. Moreover, the use of V2G, V2B, and V2B can provide more beneﬁts to the grid and
+EV owners. By injecting stored energy in EV batteries to the grid, the peak demand can be shaved
+(i.e., peak shaving) and reduce power system operation costs by shutting down generation units with
+high operating costs. Furthermore, they can defer the need for infrastructure upgrades, gain revenue
+for EV owners by charging when the electricity price is low and discharge when the electricity price is
+high (i.e., energy arbitrage), and reduce home or building electricity bills.
+5.4. Improving Power Quality
+Although single phase uncontrolled charging of EVs may cause a severe eﬀect on system
+unbalance, controlled charging methods can decrease system unbalance. In [139], the reduction of
+voltage unbalance by controlling EVs charging current was tested experimentally. The proposed
+control method is autonomous and depends only on local voltage measurement without the need
+for infrastructure upgrade and expensive communication infrastructure. The results proved that the
+proposed EVs controlled charging method can reduce voltage unbalance and minimize voltage drop.
+In another study, a method based on PV and EVs interaction for voltage unbalance minimization was
+tested in [140]. In [141], an optimization algorithm was used to control the charging and discharging
+Energies 2020, 13, 4675
+22 of 34
+of EVs to minimize VUF. An unbalanced distribution network with 1.93% VUF was used to test the
+proposed strategy. Uncontrolled charging of EVs increased the VUF signiﬁcantly to 7.7%. The controlled
+charging of EVs declined the VUF to 0.71%. Controlled charging and discharging of EVs dropped
+the VUF to 0.5%. To control the voltage unbalance, the number of EVs connected at each phase
+was optimized using a genetic algorithm in [142]. The authors of [143] proposed a hybrid method
+combining centralized controlled charging of EVs and decentralized controlled discharging of reactive
+power for voltage unbalance minimization. The proposed strategy was eﬀective in reducing VUF
+compared to uncontrolled charging case.
+It was presented in Section 4.3 that EV chargers can result in signiﬁcant harmonic distortion.
+However, the proper design of charger power electronics circuits and control methods can minimize
+or eliminate this issue. Few studies proposed EV chargers that cause no harmonic distortion or can
+provide harmonic ﬁltering. A novel control strategy applied to onboard bidirectional three phase EV
+charger was proposed in [144]. The proposed method enabled the charger to draw or inject sinusoidal
+current with no harmonics regardless of the power quality of the grid. Another study [144] proposed
+EV charger that can operate as active ﬁlter and eliminate the harmonics caused by other loads at the
+charger connection point in addition to providing reactive power compensation. In [145], the EV
+charging station was used to eliminate the harmonics in distribution network by acting as active ﬁlter.
+The high penetration of PV generation at distribution network can cause power quality issues due
+to its intermittent nature and dependence on weather conditions. The variation of weather conditions
+(i.e., clouds) results in ﬂuctuation of PV power output which can cause voltage ﬂuctuation and light
+ﬂicker. Therefore, DSOs need to develop mechanisms to mitigate power quality issues caused by the
+ﬂuctuation of PV output. Several studies proposed controlled charging of EVs as a possible solution to
+alleviate the ﬂuctuations caused by PV generation [146–148]. For instance, reference [148] assessed the
+impacts of rapid variation of PV output on voltage ﬂuctuation at low voltage distribution network
+for three scenarios. The study proposed a controlled charging of EVs to mitigate voltage ﬂuctuations.
+The results proved the eﬀectiveness of the proposed strategy in reducing voltage ﬂuctuations and
+accompanied light ﬂicker.
+The previous sections demonstrated that EVs can provide many beneﬁts and services to electric
+power systems. A very important secondary beneﬁt that EVs can provide is helping the integration of
+RESs. It is well known that to face environmental challenges and depletion of fossil fuel, large capacities
+of RESs are being installed worldwide. Most of RESs installations are PV and wind due to the
+technology advancement and fast drop in their prices. Electricity generation from RESs like PV
+and wind are variable and intermittent depending on environmental conditions (i.e., sun and wind)
+and hard to predict or forecast. This increases ﬂuctuation and uncertainty in power system besides
+load ﬂuctuation [149]. Moreover, they are non-dispatchable generation and they cannot change the
+generated power following demand variations like traditional power plants, which increase the need
+for more ﬂexibility in the power system which cannot be provided by central power plants only.
+More ﬂexibility in the power system can be achieved from distribution systems by demand response
+(i.e., controllable or dispatchable loads) and energy storage.
+Till now there is no economical utility-scale energy storage technology. EVs can act as controllable
+loads by controlled charging and as energy storage by V2G, V2B, and V2H. Several studies investigated
+how EVs can enable integrating more RESs [150]. EVs can absorb excess RESs generation and deliver
+it to the grid when needed. In [151], it was concluded that EVs and heat pumps can reduce the cost
+of integrating RESs, such as required balancing cost and required back-up generation cost. In [152],
+based on the German 2030 scenario of RESs penetration, it was found that by controlling EVs charging
+more RESs can be integrated into the power system. In [153], two case studies were considered for
+Germany and California 2030 scenario with a high share of EVs and RESs. It concluded that the smart
+charging of EVs can mitigate RESs ﬂuctuation.
+Energies 2020, 13, 4675
+23 of 34
+Reference [154], investigated the impact of V2G on two power systems and with diﬀerent
+penetration of wind generation, from 0% to 100%. It was found that V2G can enable a higher share of
+wind power generation in the power system. An optimization strategy was tested in [155] to schedule
+the charging of EVs which were connected to microgrid with PV and wind generation. The proposed
+strategy achieved load leveling in addition to reducing microgrid operating costs and EVs charging
+costs. The impact of EVs operating at controlled charging mode or V2G mode on the operation of a
+power system with high share of RESs was examined in [156]. Results showed that controlled EVs
+charging and discharging reduced deployed reserves usage, better usage of renewable generation by
+reducing wind spillage, and reduced operation cost. In [157], it was found that controlled charging
+and discharging of EVs can reduce operation costs and reduce emissions, besides maximizing RESs
+utilization. In [158], an optimization algorithm was used to manage EVs charging and discharging to
+increase the penetration of RESs. The proposed strategy was able to increase PV penetration up to 50%.
+6. Discussions and Future Research Directions
+The main contribution of this article is to provide a review of potential negative impacts of EVs
+charging on electric power systems mainly due to uncontrolled charging, and how through proper
+charging and discharging methods, those impacts can be reduced and become even positive impacts as
+discussed in Sections 4 and 5. For each potential negative impact or positive impact of EVs, the ﬁndings
+and conclusions of a few research papers were discussed as examples of the research done at each
+point to clarify it. Figure 8 provides a summary of the negative impacts of uncontrolled EVs charging
+on the electric power system and how these impacts can be mitigated or even become positive impacts
+using suitable charging and discharging methods.
+Figure 8. Uncontrolled charging negative impacts on the power system and how it can be mitigated
+and become positive impact using the proper charging/discharging method.
+As described in previous sections, there is a lot of ongoing research on the integration of EVs
+to electric power system, focusing on accurate evaluation of the negative impacts of uncontrolled
+EV charging or the services and beneﬁts EVs may provide if other smart charging and discharging
+methods are used. Other research areas that are being investigated by researchers are:
+•
+Cost–beneﬁt analysis of diﬀerent charging and discharging methods
+Most of the studies that investigate the beneﬁts that smart charging and discharging methods
+can provide focus on the technical feasibility and charging cost. However, there is a need to assess
+Energies 2020, 13, 4675
+24 of 34
+the cost of providing these services on EV batteries degradation, because EV battery is a very
+expensive component in EVs. After that, the economic feasibility of diﬀerent charging and discharging
+methods can be accurately estimated. Reference [159] executed a cost–beneﬁt analysis of controlled
+charging and V2G implementation considering EV batteries degradation cost. The results showed
+that controlled charging is economical. Moreover, the study concluded that V2G implementation is
+not economical without wind generation presence, while it is economical in the presence of wind
+generation. This area requires more studies to evaluate the economic feasibility of diﬀerent EV smart
+charging and discharging methods on diﬀerent case studies and diﬀerent scenarios. The diﬀerent
+scenarios can consider the economic feasibility of using EVs to provide various services (i.e., frequency
+regulation, voltage regulation, congestion management, etc.; or consider diﬀerent power systems with
+diﬀerent characteristics (i.e., presence of diﬀerent types of RESs, diﬀerent penetration levels of RESs,
+types of power plants, etc.).
+•
+Coordination between transmission system operator (TSO) and distribution system operator
+(DSO) for providing EV services
+As explained in previous sections, EVs can provide many local and system-wide power and energy
+services. Figure 9 summarizes the services provided to diﬀerent power system parties (i.e., transmission
+system operator (TSO), DSO, and loads such as buildings or homes) [160]. It is worth mentioning that
+the provision of system-wide services by EVs may result in issues at distribution system at which EVs
+are connected which may result in conﬂict of interests between TSO and DSO. For instance, the use
+of EVs to provide a TSO service such as frequency regulation which requires continuous change at
+charging and discharging power may cause negative impacts at the distribution system managed by
+DSO such as overloading of distribution network components, phase unbalance, etc. Therefore, there is
+a need for coordination between TSO and DSO to guarantee reliable and cost-eﬃcient EVs based
+services [161,162]. This topic is rarely investigated in the literature and there many open questions that
+require study. Therefore, it requires more attention in future research.
+ 
+Figure 9. EV services provided to diﬀerent power system parties.
+•
+Planning of public charging Infrastructure
+With the large-scale adoption of EVs in the near future, many public EV charging stations will be
+deployed in streets, highways, workplaces, shopping centers, etc. One of the main challenges for EVs
+acceptance is its limited range compared to ICEVs and driver range anxiety. Therefore, the EV chargers
+deployment must be planned accurately and eﬃciently to achieve both transportation and power system
+Energies 2020, 13, 4675
+25 of 34
+objectives and needs. Many studies investigated the planning of future EV charging infrastructure.
+The studies considered the optimal location and capacity of EV chargers [163]. Some studies considered
+the transportation network only without considering power system conditions.
+Other studies
+considered the power system only without considering transportation networks. These studies
+consider power system economic and operation constraints while reducing investments required for
+power system infrastructure upgrade. It is worth mentioning that EV charging stations couple both
+transportation network and power system; therefore, both must be taken into account at EV charging
+infrastructure planning. Few studies considered both transportation network and power system at the
+planning of EV chargers [164], because EV infrastructure planning studies require real data for both
+the transportation sector and power system, which varies between countries. There is a room for more
+research in this area considering diﬀerent case studies.
+7. Conclusions
+The paper presented EVs technology and the current need for it as well as its beneﬁts compared
+to traditional vehicles in addition to challenges it must tackle to achieve high adoption and social
+acceptance. Furthermore, it presented the current EVs market and future predictions. Diﬀerent charging
+technologies were presented such as conductive charging, which is the current charging method and
+other charging methods such as wireless charging and battery swapping which may have future
+potential. A review of the negative impacts that EV may cause on electric power systems if uncontrolled
+EV charging is used was presented. Conclusions of many studies that assessed these impacts were
+discussed. All the studies showed that uncontrolled EV charging will result in unwanted negative
+impacts on the power system especially the distribution networks and it will foster the need for
+infrastructure upgrade. The severity of these impacts varies between diﬀerent studies due to many
+uncertainties in EV charging impacts studies (e.g., distribution system status, EV battery capacity,
+EV battery SoC, time and location of charging, EV charger power rating, and EV penetration level).
+The paper also showed that these impacts can be mitigated using delayed charging and controlled
+charging methods, which can beneﬁt both the power system and EV owner. More beneﬁts and electrical
+services can be obtained from EVs with advanced charging control methods like V2G, V2B, and V2H.
+Diﬀerent electrical services that can be provided with controlled charging/discharging of EVs were
+presented and discussed. This review article brieﬂy discussed the main research areas that are being
+investigated for the integration of EVs to sustainable future power system, which can be helpful for
+engineers and researchers. It further discussed a few interesting research topics that need more study
+in future research.
+Author Contributions: M.N. wrote the manuscript ﬁrst draft. J.P.C.-Á., G.M., and Á.S.-M. reviewed, edited,
+and suggested modiﬁcations to the manuscript. All authors have read and agreed to the published version of
+the manuscript.
+Funding: This research received no external funding.
+Conﬂicts of Interest: The authors declare no conﬂict of interest.
+Abbreviations
+List of abbreviations used in this paper.
+AC
+Alternating Current
+BEV
+Battery Electric Vehicles
+BSS
+Battery Swapping Stations
+CO2
+Carbon Dioxide
+DC
+Direct Current
+DG
+Distributed Generation
+DSO
+Distribution System Operator
+Energies 2020, 13, 4675
+26 of 34
+EM
+Electric Motor
+EV
+Electric Vehicle
+EVSE
+Electric Vehicle Supply Equipment
+FCEV
+Fuel Cell Electric Vehicle
+G2V
+Grid to Vehicle
+GHGs
+Greenhouse gases
+h
+Hour
+HEV
+Hybrid Electric Vehicles
+ICE
+Internal Combustion Engine
+ICEV
+Internal Combustion Engine Vehicle
+IEA
+International Energy Agency
+IEEE
+Institute of Electrical and Electronics Engineers
+IWC
+Inductive Wireless Charging
+km
+Kilometer
+kVA
+Kilo volt ampere
+kW
+Kilowatt
+kWh
+Kilowatt hour
+LFC
+Load Frequency Control
+Li-ion
+Lithium-ion
+OLTC
+On-Load Tap Changer
+PFC
+Primary Frequency Control
+PHEV
+Plug-in Hybrid Electric Vehicles
+PLDV
+passenger light-duty vehicles
+PV
+Photovoltaic
+RES
+Renewable Energy Source
+SoC
+State of Charge
+THD
+Total Harmonic Distortion
+THDi
+Total Harmonic Distortion of current
+THDv
+Total Harmonic Distortion of Voltage
+ToU
+Time of Use
+TSO
+Transmission System Operator
+V2B
+Vehicle to Building
+V2G
+Vehicle to Grid
+V2H
+Vehicle to Home
+VUF
+Voltage Unbalance Factor
+WC
+Wireless Charging
+References
+1.
+UNFCCC; Conference of the Parties (COP). Adoption of the Paris Agreement Proposal by the President.
+In Proceedings of the Paris Climate Change Conference, Paris, France, 30 November–12 December 2015.
+2.
+Labatt, S.; White, R.R. Carbon Finance: The Financial Implications of Climate Change; John Wiley & Sons:
+Hoboken, NJ, USA, 2007.
+3.
+OECD. World Energy Statistics 2017; OECD: Paris, France, 2017.
+4.
+Shaukat, N.; Khan, B.; Ali, S.; Mehmood, C.; Khan, J.; Farid, U.; Majid, M.; Anwar, S.M.; Jawad, M.; Ullah, Z.
+A survey on electric vehicle transportation within smart grid system. Renew. Sustain. Energy Rev. 2018, 81,
+1329–1349. [CrossRef]
+5.
+Hedegaard, K.; Ravn, H.; Juul, N.; Meibom, P. Eﬀects of electric vehicles on power systems in Northern
+Europe. Energy 2012, 48, 356–368. [CrossRef]
+6.
+Nanaki, E.A.; Koroneos, C.J. Comparative economic and environmental analysis of conventional, hybrid and
+electric vehicles—The case study of Greece. J. Clean. Prod. 2013, 53, 261–266. [CrossRef]
+7.
+Agency, I.E. Global EV Outlook 2019 to electric mobility. IEA Publ. 2019.
+8.
+Knez, M.; Zevnik, G.K.; Obrecht, M. A review of available chargers for electric vehicles: United States of
+America, European Union, and Asia. Renew. Sustain. Energy Rev. 2019, 109, 284–293. [CrossRef]
+Energies 2020, 13, 4675
+27 of 34
+9.
+Dubey, A.; Santoso, S. Electric Vehicle Charging on Residential Distribution Systems: Impacts and Mitigations.
+IEEE Access 2015, 3, 1871–1893. [CrossRef]
+10.
+García-Villalobos, J.; Zamora, I.; Martin, J.S.; Asensio, F.J.; Aperribay, V. Plug-in electric vehicles in electric
+distribution networks: A review of smart charging approaches. Renew. Sustain. Energy Rev. 2014, 38, 717–731.
+[CrossRef]
+11.
+Haus, B.; Mercorelli, P. Polynomial Augmented Extended Kalman Filter to Estimate the State of Charge of
+Lithium-Ion Batteries. IEEE Trans. Veh. Technol. 2020, 69, 1452–1463. [CrossRef]
+12.
+Nour, M.; Said, S.M.; Ali, A.; Farkas, C. Smart Charging of Electric Vehicles According to Electricity Price.
+In Proceedings of the 2019 International Conference on Innovative Trends in Computer Engineering ITCE,
+Aswan, Egypt, 2–4 February 2019; pp. 432–437. [CrossRef]
+13.
+Naﬁsi, H. Investigation on distribution transformer loss-of-life due to plug-in hybrid electric vehicles
+charging. Int. J. Ambient. Energy 2019, 1–7. [CrossRef]
+14.
+Nour, M.; Ramadan, H.; Ali, A.; Farkas, C. Impacts of plug-in electric vehicles charging on low voltage
+distribution network. In Proceedings of the 2018 International Conference on Innovative Trends in Computer
+Engineering (ITCE), Aswan, Egypt, 19–21 February 2018; pp. 357–362.
+15.
+Tong, X.; Ma, Q.; Tang, K.; Liu, H.; Li, C. Inﬂuence of electric vehicle access mode on the static voltage stability
+margin and accommodated capacity of the distribution network. J. Eng. 2019, 2019, 2658–2662. [CrossRef]
+16.
+Nour, M.; Ali, A.; Farkas, C. Mitigation of Electric Vehicles Charging Impacts on Distribution Network
+with Photovoltaic Generation. In Proceedings of the 2019 International Conference on Innovative Trends in
+Computer Engineering (ITCE), Aswan, Egypt, 19–21 February 2018; pp. 384–388.
+17.
+Ul-Haq, A.; Azhar, M.; Mahmoud, Y.; Perwaiz, A.; Al-Ammar, E.A. Probabilistic Modeling of Electric Vehicle
+Charging Pattern Associated with Residential Load for Voltage Unbalance Assessment. Energies 2017, 10,
+1351. [CrossRef]
+18.
+Leou, R.-C.; Teng, J.-H.; Lu, H.-J.; Lan, B.-R.; Chen, H.-T.; Hsieh, T.-Y.; Su, C.-L. Stochastic analysis of electric
+transportation charging impacts on power quality of distribution systems. IET Gener. Transm. Distrib. 2018,
+12, 2725–2734. [CrossRef]
+19.
+Yong, J.Y.; Ramachandaramurthy, V.K.; Tan, K.M.; Mithulananthan, N. A review on the state-of-the-art
+technologies of electric vehicle, its impacts and prospects. Renew. Sustain. Energy Rev. 2015, 49, 365–385.
+[CrossRef]
+20.
+Hota, A.R.; Juvvanapudi, M.; Bajpai, P. Issues and solution approaches in PHEV integration to the smart
+grid. Renew. Sustain. Energy Rev. 2014, 30, 217–229. [CrossRef]
+21.
+Richardson, D.B. Electric vehicles and the electric grid: A review of modeling approaches, Impacts, and
+renewable energy integration. Renew. Sustain. Energy Rev. 2013, 19, 247–254. [CrossRef]
+22.
+Talebizadeh, E.; Rashidinejad, M.; Abdollahi, A. Evaluation of plug-in electric vehicles impact on cost-based
+unit commitment. J. Power Sources 2014, 248, 545–552. [CrossRef]
+23.
+Lyon, T.P.; Michelin, M.; Jongejan, A.; Leahy, T. Is “smart charging” policy for electric vehicles worthwhile?
+Energy Policy 2012, 41, 259–268. [CrossRef]
+24.
+Weis, A.; Jaramillo, P.; Michalek, J.J. Estimating the potential of controlled plug-in hybrid electric vehicle
+charging to reduce operational and capacity expansion costs for electric power systems with high wind
+penetration. Appl. Energy 2014, 115, 190–204. [CrossRef]
+25.
+Windecker, A.; Ruder, A. Fuel economy, cost, and greenhouse gas results for alternative fuel vehicles in 2011.
+Transp. Res. Part. D Transp. Environ. 2013, 23, 34–40. [CrossRef]
+26.
+Karabasoglu, O.; Michalek, J.J. Inﬂuence of driving patterns on life cycle cost and emissions of hybrid and
+plug-in electric vehicle powertrains. Energy Policy 2013, 60, 445–461. [CrossRef]
+27.
+Lunz, B.; Yan, Z.; Gerschler, J.B.; Sauer, D.U. Inﬂuence of plug-in hybrid electric vehicle charging strategies
+on charging and battery degradation costs. Energy Policy 2012, 46, 511–519. [CrossRef]
+28.
+Gass, V.; Schmidt, J.; Schmid, E. Analysis of alternative policy instruments to promote electric vehicles in
+Austria. Renew. Energy 2014, 61, 96–101. [CrossRef]
+29.
+Tie, S.F.; Tan, C.W. A review of energy sources and energy management system in electric vehicles.
+Renew. Sustain. Energy Rev. 2013, 20, 82–102. [CrossRef]
+30.
+Un-Noor, F.; Padmanaban, S.; Mihet-Popa, L.; Mollah, M.N.; Hossain, E. A Comprehensive Study of Key
+Electric Vehicle (EV) Components, Technologies, Challenges, Impacts, and Future Direction of Development.
+Energies 2017, 10, 1217. [CrossRef]
+Energies 2020, 13, 4675
+28 of 34
+31.
+Andwari, A.M.; Pesiridis, A.; Rajoo, S.; Martinez-Botas, R.; Esfahanian, V. A review of Battery Electric Vehicle
+technology and readiness levels. Renew. Sustain. Energy Rev. 2017, 78, 414–430. [CrossRef]
+32.
+Singh, B.; Chandra, A.; Al-Haddad, K.; Pandey, A.; Kothari, D.P. A review of single-phase improved power
+quality ac~dc converters. IEEE Trans. Ind. Electron. 2003, 50, 962–981. [CrossRef]
+33.
+Singh, B.; Singh, B.; Chandra, A.; Al-Haddad, K.; Pandey, A.; Kothari, D. A Review of Three-Phase Improved
+Power Quality AC–DC Converters. IEEE Trans. Ind. Electron. 2004, 51, 641–660. [CrossRef]
+34.
+Yılmaz, M.; Krein, P.T.; Yilmaz, M. Review of charging power levels and infrastructure for plug-in electric
+and hybrid vehicles. In Proceedings of the 2012 IEEE International Electric Vehicle Conference (IEVC),
+Greenville, SC, USA, 4–8 March 2012; pp. 1–8. [CrossRef]
+35.
+Young, K.; Wang, C.; Wang, L.Y.; Strunz, K. Electric Vehicle Integration into Modern Power Networks; Springer:
+Berlin/Heidelberg, Germany, 2013.
+36.
+Botsford, C.; Szczepanek, A. Fast Charging vs. Slow Charging: Pros and cons for the New Age of Electric
+Vehicles. Int. Battery Hybrid Fuel Cell Electr. Veh. Symp. 2009.
+37.
+Yang, Y.; El Baghdadi, M.; Lan, Y.; Benomar, Y.; Van Mierlo, J.; Hegazy, O. Design Methodology, Modeling,
+and Comparative Study of Wireless Power Transfer Systems for Electric Vehicles. Energies 2018, 11, 1716.
+[CrossRef]
+38.
+Cao, Y.; Ahmad, N.; Kaiwartya, O.; Puturs, G.; Khalid, M. Intelligent Transportation Systems Enabled ICT
+Framework for Electric Vehicle Charging in Smart City. In Handbook of Smart Cities; Springer Science and
+Business Media LLC: Berlin, Germany, 2018; pp. 311–330.
+39.
+Wang, Z.; Wei, X.; Dai, H. Design and Control of a 3 kW Wireless Power Transfer System for Electric Vehicles.
+Energies 2015, 9, 10. [CrossRef]
+40.
+Musavi, F.; Eberle, W. Overview of wireless power transfer technologies for electric vehicle battery charging.
+IET Power Electron. 2014, 7, 60–66. [CrossRef]
+41.
+Li, S.; Mi, C.C. Wireless power transfer for electric vehicle applications. IEEE J. Emerg. Sel. Top. Power Electron.
+2015, 3, 4–17.
+42.
+Ahmad, A.; Khan, Z.A.; Alam, M.S.; Khateeb, S. A Review of the Electric Vehicle Charging Techniques,
+Standards, Progression and Evolution of EV Technologies in Germany. Smart Sci. 2017, 6, 36–53. [CrossRef]
+43.
+Sarker, M.; Pandži´c, H.; Ortega-Vazquez, M. Optimal operation and services scheduling for an electric vehicle
+battery swapping station. In Proceedings of the 2015 IEEE Power & Energy Society General Meeting, Denver,
+CO, USA, 26–30 July 2015.
+44.
+Zheng, Y.; Dong, Z.; Xu, Y.; Meng, K.; Zhao, J.H.; Qiu, J. Electric Vehicle Battery Charging/Swap Stations in
+Distribution Systems: Comparison Study and Optimal Planning. IEEE Trans. Power Syst. 2013, 29, 221–229.
+[CrossRef]
+45.
+Sarker, M.R.; Pandži´c, H.; Ortega-Vazquez, M. Electric vehicle battery swapping station: Business case and
+optimization model. In Proceedings of the 2013 International Conference on Connected Vehicles and Expo
+(ICCVE), Las Vegas, NV, USA, 2–6 December 2013; pp. 289–294. [CrossRef]
+46.
+Rao, R.; Zhang, X.; Xie, J.; Ju, L. Optimizing electric vehicle users’ charging behavior in battery swapping
+mode. Appl. Energy 2015, 155, 547–559. [CrossRef]
+47.
+Yang, S.; Yao, J.; Kang, T.; Zhu, X. Dynamic operation model of the battery swapping station for EV (electric
+vehicle) in electricity market. Energy 2014, 65, 544–549. [CrossRef]
+48.
+Electric Car Maker Tesla Unveils 90-s Battery Pack Swap—Reuters. Available online: https://www.reuters.com/
+article/us-tesla-swap/electric-car-maker-tesla-unveils-90-s-battery-pack-swap-idUSBRE95K07H20130621
+(accessed on 31 December 2019).
+49.
+Shareef, H.; Islam, M.; Mohamed, A. A review of the stage-of-the-art charging technologies, placement
+methodologies, and impacts of electric vehicles. Renew. Sustain. Energy Rev. 2016, 64, 403–420. [CrossRef]
+50.
+Alshahrani, S.; Khalid, M.; AlMuhaini, M.M. Electric Vehicles Beyond Energy Storage and Modern Power
+Networks: Challenges and Applications. IEEE Access 2019, 7, 99031–99064. [CrossRef]
+51.
+Papathanassiou, S.; Nikos, H.; Kai, S. A benchmark low voltage microgrid network. In Proceedings of the
+CIGRE Symposium: Power Systems with Dispersed Generation, Athens, Greece, 13–16 April 2005; pp. 1–8.
+52.
+Shao, S.; Zhang, T.; Pipattanasomporn, M.; Rahman, S. Impact of TOU rates on distribution load shapes in a
+smart grid with PHEV penetration. IEEE PES T&D 2010 2010, 1–6. [CrossRef]
+Energies 2020, 13, 4675
+29 of 34
+53.
+Gao, Y.; Wang, C.; Wang, Z.; Liang, H. Research on time-of-use price applying to electric vehicles charging.
+In Proceedings of the IEEE PES Innovative Smart Grid Technologies, Berlin, Germany, 14–17 October 2012;
+pp. 1–6.
+54.
+Tan, K.M.; Ramachandaramurthy, V.K.; Yong, J.Y. Integration of electric vehicles in smart grid: A review on
+vehicle to grid technologies and optimization techniques. Renew. Sustain. Energy Rev. 2016, 53, 720–732.
+[CrossRef]
+55.
+Rahman, I.; Vasant, P.M.; Singh, M.S.B.; Abdullah-Al-Wadud, M.; Adnan, N. Review of recent trends in
+optimization techniques for plug-in hybrid, and electric vehicle charging infrastructures. Renew. Sustain.
+Energy Rev. 2016, 58, 1039–1047. [CrossRef]
+56.
+Faddel, S.; Al-Awami, A.T.; Mohammed, O.A. Charge Control and Operation of Electric Vehicles in Power
+Grids: A Review. Energies 2018, 11, 701. [CrossRef]
+57.
+Faddel, S.; Mohamed, A.A.S.; Mohammed, O.A. Fuzzy logic-based autonomous controller for electric
+vehicles charging under diﬀerent conditions in residential distribution systems. Electr. Power Syst. Res. 2017,
+148, 48–58. [CrossRef]
+58.
+Al-Awami, A.T.; Sortomme, E.; Akhtar, G.M.A.; Faddel, S. A Voltage-Based Controller for an Electric-Vehicle
+Charger. IEEE Trans. Veh. Technol. 2015, 65, 4185–4196. [CrossRef]
+59.
+Saldaña, G.; Martin, J.S.; Zamora, I.; Asensio, F.J.; Oñederra, O. Electric Vehicle into the Grid: Charging
+Methodologies Aimed at Providing Ancillary Services Considering Battery Degradation. Energies 2019, 12,
+2443. [CrossRef]
+60.
+Habib, S.; Kamran, M.; Rashid, U. Impact analysis of vehicle-to-grid technology and charging strategies of
+electric vehicles on distribution networks—A review. J. Power Sources 2015, 277, 205–214. [CrossRef]
+61.
+Thompson, A. Economic implications of lithium ion battery degradation for Vehicle-to-Grid (V2X) services.
+J. Power Sources 2018, 396, 691–709. [CrossRef]
+62.
+Pang, C.; Dutta, P.; Kezunovic, M. BEVs/PHEVs as Dispersed Energy Storage for V2B Uses in the Smart Grid.
+IEEE Trans. Smart Grid 2011, 3, 473–482. [CrossRef]
+63.
+Shin, H.; Baldick, R. Plug-In Electric Vehicle to Home (V2H) Operation Under a Grid Outage. IEEE Trans.
+Smart Grid 2017, 8, 2032–2041. [CrossRef]
+64.
+Alahyari, A.; Fotuhi-Firuzabad, M.; Rastegar, M. Incorporating Customer Reliability Cost in PEV Charge
+Scheduling Schemes Considering Vehicle to Home Capability. IEEE Trans. Veh. Technol. 2014, 64, 1. [CrossRef]
+65.
+Habib, S.; Khan, M.M.; Abbas, F.; Sang, L.; Shahid, M.U.; Tang, H. A Comprehensive Study of Implemented
+International Standards, Technical Challenges, Impacts and Prospects for Electric Vehicles. IEEE Access 2018,
+6, 13866–13890. [CrossRef]
+66.
+Bohn, S.; Feustel, R.; Agsten, M. MC-based Risk Analysis on the Capacity of Distribution Grids to Charge
+PEVs on 3-ph 0.4-kV Distribution Grids Considering Time and Location Uncertainties. SAE Int. J. Passeng.
+Cars Electron. Electr. Syst. 2015, 8, 394–400. [CrossRef]
+67.
+Ahmadian, A.; Mohammadi-Ivatloo, B.; Elkamel, A. A Review on Plug-in Electric Vehicles: Introduction,
+Current Status, and Load Modeling Techniques. J. Mod. Power Syst. Clean Energy 2020, 8, 412–425. [CrossRef]
+68.
+Wang, Z.; Paranjape, R. An Evaluation of Electric Vehicle Penetration under Demand Response in a
+Multi-Agent Based Simulation. In Proceedings of the 2014 IEEE Electrical Power and Energy Conference,
+Calgary, AB, Canada, 12–14 November 2014; pp. 220–225.
+69.
+Putrus, G.A.; Suwanapingkarl, P.; Johnston, D.; Bentley, E.C.; Narayana, M. Impact of electric vehicles on
+power distribution networks. In Proceedings of the 2009 IEEE Vehicle Power and Propulsion Conference,
+Dearborn, MI, USA, 7–10 September 2009; pp. 827–831.
+70.
+McCarthy, D.; Wolfs, P. The HV system impacts of large scale electric vehicle deployments in a metropolitan
+area. In Proceedings of the AUPEC 2010—20th Australasian Universities Power Engineering Conference
+2010, Christchurch, New Zealand, 5 December 2010.
+71.
+Schneider, K.P.; Gerkensmeyer, C.; Kintner-Meyer, M.; Fletcher, R. Impact assessment of plug-in hybrid
+vehicles on paciﬁc northwest distribution systems. In Proceedings of the 2008 IEEE Power and Energy
+Society General Meeting—Conversion and Delivery of Electrical Energy in the 21st Century, Pittsburgh, PA,
+USA, 20–24 July 2008; pp. 1–6. [CrossRef]
+72.
+Kelly, L.; Rowe, A.; Wild, P. Analyzing the impacts of plug-in electric vehicles on distribution networks in
+British Columbia. In Proceedings of the 2011 IEEE Electrical Power and Energy Conference, Montreal, QC,
+Canada, 22–23 October 2009; Institute of Electrical and Electronics Engineers (IEEE); pp. 1–6.
+Energies 2020, 13, 4675
+30 of 34
+73.
+Shao, S.; Pipattanasomporn, M.; Rahman, S. Grid Integration of Electric Vehicles and Demand Response
+with Customer Choice. IEEE Trans. Smart Grid 2012, 3, 543–550. [CrossRef]
+74.
+Crozier, C.; Morstyn, T.; McCulloch, M. The opportunity for smart charging to mitigate the impact of electric
+vehicles on transmission and distribution systems. Appl. Energy 2020, 268, 114973. [CrossRef]
+75.
+Kristoﬀersen, T.K.; Capion, K.; Meibom, P. Optimal charging of electric drive vehicles in a market environment.
+Appl. Energy 2011, 88, 1940–1948. [CrossRef]
+76.
+Denholm, P.; Short, W. Evaluation of Utility System Impacts and Beneﬁts of Optimally Dispatched Plug-In Hybrid
+Electric Vehicles; NREL: Golden, CO, USA, 2006.
+77.
+Drovtar, I.; Rosin, A.; Landsberg, M.; Kilter, J. Large scale electric vehicle integration and its impact on the
+Estonian power system. In Proceedings of the 2013 IEEE Grenoble Conference, Grenoble, France, 16–20 June
+2013; Institute of Electrical and Electronics Engineers (IEEE); pp. 1–6.
+78.
+Van Cutsem, T. Voltage instability: Phenomena, countermeasures, and analysis methods. Proc. IEEE 2000,
+88, 208–227. [CrossRef]
+79.
+Dharmakeerthi, C.; Mithulananthan, N.; Saha, T.K. Impact of electric vehicle fast charging on power system
+voltage stability. Int. J. Electr. Power Energy Syst. 2014, 57, 241–249. [CrossRef]
+80.
+Clement-Nyns, K.; Haesen, E.; Driesen, J. The Impact of Charging Plug-In Hybrid Electric Vehicles on a
+Residential Distribution Grid. IEEE Trans. Power Syst. 2009, 25, 371–380. [CrossRef]
+81.
+Gray, M.K.; Morsi, W.G. Power Quality Assessment in Distribution Systems Embedded With Plug-In Hybrid
+and Battery Electric Vehicles. IEEE Trans. Power Syst. 2014, 30, 663–671. [CrossRef]
+82.
+Xiong, J.; Zhang, K.; Liu, X.; Su, W. Investigating the impact of plug-in electric vehicle charging on power
+distribution systems with the integrated modeling and simulation of transportation network. In Proceedings
+of the ITEC Asia-Paciﬁc 2014—IEEE Transportation Electriﬁcation Conference & Expo 2014, Beijing, China,
+31 August–3 September 2014; pp. 1–5. [CrossRef]
+83.
+Soroudi, A.; Keane, A. Plug in Electric Vehicles in Smart Grids; Springer: Berlin/Heidelberg, Germany, 2015;
+p. 89.
+84.
+Ul-Haq, A.; Cecati, C.; Strunz, K.; Abbasi, E. Impact of Electric Vehicle Charging on Voltage Unbalance in an
+Urban Distribution Network. Intell. Ind. Syst. 2015, 1, 51–60. [CrossRef]
+85.
+Shahnia, F.; Ghosh, A.; Ledwich, G.; Zare, F. Predicting Voltage Unbalance Impacts of Plug-in Electric
+Vehicles Penetration in Residential Low-voltage Distribution Networks. Electr. Power Compon. Syst. 2013, 41,
+1594–1616. [CrossRef]
+86.
+Richardson, P.; Flynn, D.; Keane, A. Impact assessment of varying penetrations of electric vehicles
+on low voltage distribution systems.
+In Proceedings of the 2008 IEEE Power and Energy Society
+General Meeting—Conversion and Delivery of Electrical Energy in the 21st Century, Providence, RI,
+USA, 25–29 July 2010; pp. 1–6. [CrossRef]
+87.
+Liu, R.; Dow, L.; Liu, E. A survey of PEV impacts on electric utilities. In Proceedings of the Innovative Smart
+Grid Technologies (ISGT), 2011 IEEE PES, Perth, Australia, 13–16 November 2011.
+88.
+Jiang, C.; Torquato, R.; Salles, D.; Xu, W. Method to assess the power quality impact of plug-in electric
+vehicles. In Proceedings of the 2014 16th International Conference on Harmonics and Quality of Power,
+Bucharest, Romania, 25–28 May 2014; pp. 177–180. [CrossRef]
+89.
+Bass, R.; Harley, R.; Lambert, F.; Rajasekaran, V.; Pierce, J. Residential harmonic loads and EV charging.
+In Proceedings of the 2001 IEEE Power Engineering Society Winter Meeting Conference Proceedings (Cat No
+01CH37194), Columbus, OH, USA, 28 January–1 February 2001; pp. 803–808. [CrossRef]
+90.
+Nguyen, V.-L.; Tran-Quoc, T.; Bacha, S. Harmonic distortion mitigation for electric vehicle fast charging
+systems. In Proceedings of the 2013 IEEE Grenoble Conference, Grenoble, France, 16–20 June 2013; pp. 1–6.
+91.
+Melo, N.; Mira, F.; De Almeida, A.; Delgado, J. Integration of PEV in Portuguese distribution grid: Analysis
+of harmonic current emissions in charging points. In Proceedings of the 11th International Conference on
+Electrical Power Quality and Utilisation, Lisbon, Portugal, 17–19 October 2011; pp. 1–6. [CrossRef]
+92.
+Monteiro, V.; Gonçalves, H.; Afonso, J.L. Impact of Electric Vehicles on power quality in a Smart Grid context.
+In Proceedings of the 11th International Conference on Electrical Power Quality and Utilisation, Lisbon,
+Portugal, 17–19 October 2011; pp. 1–6. [CrossRef]
+93.
+Gomez, J.; Morcos, M. Impact of EV battery chargers on the power quality of distribution systems. IEEE Trans.
+Power Deliv. 2003, 18, 975–981. [CrossRef]
+Energies 2020, 13, 4675
+31 of 34
+94.
+Zhou, C.; Wang, H.; Zhou, W.; Qian, K.; Meng, S. Determination of maximum level of EV penetration with
+consideration of EV charging load and harmonic currents. IOP Conf. Ser. Earth Environ. Sci. 2019, 342,
+012010. [CrossRef]
+95.
+Hilshey, A.D.; Rezaei, P.; Hines, P.D.H.; Frolik, J. Electric vehicle charging: Transformer impacts and smart,
+decentralized solutions. In Proceedings of the 2012 IEEE Power Energy Society General Meeting, San Diego,
+CA, USA, 22–26 July 2012; pp. 1–8. [CrossRef]
+96.
+Papadopoulos, P.; Skarvelis-Kazakos, S.; Grau, I.; Awad, B.; Cipcigan, L.M.; Jenkins, N. Impact of residential
+charging of electric vehicles on distribution networks, a probabilistic approach. In Proceedings of the 45th
+International Universities Power Engineering Conference, Cardiﬀ, UK, 31 August–3 September 2010; pp. 1–5.
+97.
+Verzijlbergh, R.A.; Lukszo, Z.; Slootweg, J.G.; Ilic, M.D. The impact of controlled electric vehicle charging
+on residential low voltage networks. In Proceedings of the 2011 International Conference on Networking,
+Sensing and Control, Delft, The Netherlands, 11–13 April 2011; pp. 14–19. [CrossRef]
+98.
+Turker, H.; Chatroux, D.; Hably, A.; Bacha, S. Low-Voltage Transformer Loss-of-Life Assessments for a High
+Penetration of Plug-In Hybrid Electric Vehicles (PHEVs). IEEE Trans. Power Deliv. 2012, 27, 1323–1331.
+[CrossRef]
+99.
+Hilshey, A.; Hines, P.; Rezai, P.; Dowds, J. Estimating the impact of electric vehicle smart charging on
+distribution transformer aging. In Proceedings of the 2013 IEEE Power Energy Society General Meeting,
+Vancouver, BC, Canada, 21–25 July 2013; p. 1. [CrossRef]
+100. Razeghi, G.; Zhang, L.; Brown, T.; Samuelsen, S. Impacts of plug-in hybrid electric vehicles on a residential
+transformer using stochastic and empirical analysis. J. Power Sources 2014, 252, 277–285. [CrossRef]
+101. Yan, Q.; Kezunovic, M. Impact analysis of Electric Vehicle charging on distribution system. In Proceedings of
+the 2012 North American Power Symposium (NAPS), Champaign, IL, USA, 9-11 September 2012; pp. 1–6.
+102. Akhavan-Rezai, E.; Shaaban, M.F.; El-Saadany, E.F.; Zidan, A. Uncoordinated charging impacts of electric
+vehicles on electric distribution grids: Normal and fast charging comparison. In Proceedings of the 2012
+IEEE Power and Energy Society General Meeting, San Diego, CA, USA, 22–26 July 2012; pp. 1–7.
+103. Fernandez, L.P.; GomezSanRoman, T.; Cossent, R.; Domingo, C.M.; Frias, P. Assessment of the Impact of
+Plug-in Electric Vehicles on Distribution Networks. IEEE Trans. Power Syst. 2010, 26, 206–213. [CrossRef]
+104. Pillai, J.R.; Bak-Jensen, B. Impacts of electric vehicle loads on power distribution systems. In Proceedings of
+the 2010 IEEE Vehicle Power and Propulsion Conference, Lille, France, 1–3 September 2010; pp. 1–6.
+105. Masoum, M.A.; Moses, P.S.; Smedley, K.M. Distribution transformer losses and performance in smart grids with
+residential Plug-In Electric Vehicles. In Proceedings of the ISGT 2011, Anaheim, CA, USA, 17–19 January 2011.
+106. Deb, S.; Tammi, K.; Kalita, K.; Mahanta, P. Impact of Electric Vehicle Charging Station Load on Distribution
+Network. Energies 2018, 11, 178. [CrossRef]
+107. Chang, M.; Bae, S.; Yoon, G.-G.; Park, S.-H.; Choy, Y. Impact of Electric Vehicle Charging Demand on a Jeju
+Island Radial Distribution Network. In Proceedings of the 2019 IEEE Power & Energy Society Innovative
+Smart Grid Technologies Conference (ISGT), Bucharest, Romania, 29 September–2 October 2019; pp. 1–5.
+108. Tomi´c, J.; Kempton, W. Using ﬂeets of electric-drive vehicles for grid support. J. Power Sources 2007, 168,
+459–468. [CrossRef]
+109. Pavi´c, I.; Capuder, T.; Kuzle, I. Value of ﬂexible electric vehicles in providing spinning reserve services.
+Appl. Energy 2015, 157, 60–74. [CrossRef]
+110. Izadkhast, S.D. Aggregation of Plug-in Electric Vehicles in Power Systems for Primary Frequency Control.
+Delft Univ. Technol. Comillas Pontif. Univ. KTH R. Inst. 2017, 240. [CrossRef]
+111. Yang, Z.; Li, K.; Foley, A.; Guo, Y. Computational scheduling methods for integrating plug-in electric vehicles
+with power systems: A review. Renew. Sustain. Energy Rev. 2015, 51, 396–416. [CrossRef]
+112. Prabha, K. Power System Stability and Control; McGraw-Hill Education: New York, NY, USA, 1994; p. 1176.
+113. Babahajiani, P.; Shaﬁee, Q.; Bevrani, H. Intelligent Demand Response Contribution in Frequency Control of
+Multi-Area Power Systems. IEEE Trans. Smart Grid 2016, 9, 1282–1291. [CrossRef]
+114. Ulbig, A.; Borsche, T.; Andersson, G. Impact of Low Rotational Inertia on Power System Stability and Operation;
+Elsevier: Amsterdam, The Netherlands, 2014; Volume 47, pp. 7290–7297.
+115. Rodrigues, E.M.G.; Osório, G.; Godina, R.; Bizuayehu, A.; Lujano-Rojas, J.; Catalão, J. Grid code reinforcements
+for deeper renewable generation in insular energy systems. Renew. Sustain. Energy Rev. 2016, 53, 163–177.
+[CrossRef]
+Energies 2020, 13, 4675
+32 of 34
+116. Cabrera-Tobar, A.; Bullich-Massagué, E.; Aragues-Penalba, M.; Gomis-Bellmunt, O. Review of advanced
+grid requirements for the integration of large scale photovoltaic power plants in the transmission system.
+Renew. Sustain. Energy Rev. 2016, 62, 971–987. [CrossRef]
+117. Marinelli, M.; Martinenas, S.; Knezovi´c, K.; Andersen, P.B. Validating a centralized approach to primary
+frequency control with series-produced electric vehicles. J. Energy Storage 2016, 7, 63–73. [CrossRef]
+118. Mu, Y.; Wu, J.; Ekanayake, J.; Jenkins, N.; Jia, H. Primary Frequency Response From Electric Vehicles in the
+Great Britain Power System. IEEE Trans. Smart Grid 2012, 4, 1142–1150. [CrossRef]
+119. Wang, L.; Chen, B. Dual-level consensus-based frequency regulation using vehicle-to-grid service. Electr. Power
+Syst. Res. 2019, 167, 261–276. [CrossRef]
+120. Almeida, P.R.; Soares, F.J.; Lopes, J.P. Electric vehicles contribution for frequency control with inertial
+emulation. Electr. Power Syst. Res. 2015, 127, 141–150. [CrossRef]
+121. Meng, J.; Mu, Y.; Jia, H.; Wu, J.; Yu, X.; Qu, B. Dynamic frequency response from electric vehicles considering
+travelling behavior in the Great Britain power system. Appl. Energy 2016, 162, 966–979. [CrossRef]
+122. Jia, H.; Li, X.; Mu, Y.; Xu, C.; Jiang, Y.; Yu, X.; Wu, J.; Dong, C. Coordinated control for EV aggregators and
+power plants in frequency regulation considering time-varying delays. Appl. Energy 2018, 210, 1363–1376.
+[CrossRef]
+123. Vahedipour-Dahraie, M.; Rashidizadeh-Kermani, H.; Ghamsari-Yazdel, M.; Khaloie, H.; Guerrero, J.M.
+Coordination of EVs Participation for Load Frequency Control in Isolated Microgrids. Appl. Sci. 2017, 7, 539.
+[CrossRef]
+124. Debbarma, S.; Dutta, A. Utilizing Electric Vehicles for LFC in Restructured Power Systems Using Fractional
+Order Controller. IEEE Trans. Smart Grid 2016, 8, 2554–2564. [CrossRef]
+125. Hajforoosh, S.; Masoum, M.A.; Islam, S. Online optimal variable charge-rate coordination of plug-in electric
+vehicles to maximize customer satisfaction and improve grid performance. Electr. Power Syst. Res. 2016, 141,
+407–420. [CrossRef]
+126. Nour, M.; Said, S.M.; Ramadan, H.; Ali, A.; Farkas, C. Control of Electric Vehicles Charging Without
+Communication Infrastructure. In Proceedings of the 2018 Twentieth International Middle East Power
+Systems Conference (MEPCON), Cairo, Egypt, 18–20 December 2018; pp. 773–778.
+127. Ramadan, H.; Ali, A.; Nour, M.; Farkas, C. Smart Charging and Discharging of Plug-in Electric Vehicles
+for Peak Shaving and Valley Filling of the Grid Power. In Proceedings of the 2018 Twentieth International
+Middle East Power Systems Conference (MEPCON), Cairo, Egypt, 18–20 December 2018; pp. 735–739.
+128. Marra, F.; Yang, G.Y.; Fawzy, Y.T.; Traeholt, C.; Larsen, E.; Garcia-Valle, R.; Jensen, M.M. Improvement
+of Local Voltage in Feeders with Photovoltaic Using Electric Vehicles. IEEE Trans. Power Syst. 2013, 28,
+3515–3516. [CrossRef]
+129. Kisacikoglu, M.C.; Ozpineci, B.; Tolbert, L.M. Examination of a PHEV bidirectional charger system for
+V2G reactive power compensation. In Proceedings of the 2010 Twenty-Fifth Annual IEEE Applied Power
+Electronics Conference and Exposition (APEC) 2010, Palm Springs, CA, USA, 21–25 February 2010; pp. 458–465.
+[CrossRef]
+130. Yong, J.Y.; Ramachandaramurthy, V.K.; Tan, K.M.; Mithulananthan, N. Bi-directional electric vehicle fast
+charging station with novel reactive power compensation for voltage regulation. Int. J. Electr. Power
+Energy Syst. 2015, 64, 300–310. [CrossRef]
+131. Azzouz, M.A.; Shaaban, M.F.; El-Saadany, E.F. Real-Time Optimal Voltage Regulation for Distribution
+Networks Incorporating High Penetration of PEVs. IEEE Trans. Power Syst. 2015, 30, 1–12. [CrossRef]
+132. Nour, M.; Ali, A.; Farkas, C. Evaluation of Electric Vehicles Charging Impacts on A Real Low Voltage Grid.
+Int. J. Power Eng. Energy 2018, 1–6.
+133. Zhang, K.; Xu, L.; Ouyang, M.; Wang, H.; Lu, L.; Li, J.; Li, Z. Optimal decentralized valley-ﬁlling charging
+strategy for electric vehicles. Energy Convers. Manag. 2014, 78, 537–550. [CrossRef]
+134. Su, J.; Lie, T.; Zamora, R. Modelling of large-scale electric vehicles charging demand: A New Zealand case
+study. Electr. Power Syst. Res. 2019, 167, 171–182. [CrossRef]
+135. Staudt, P.; Schmidt, M.; Gärttner, J.; Weinhardt, C. A decentralized approach towards resolving transmission
+grid congestion in Germany using vehicle-to-grid technology. Appl. Energy 2018, 230, 1435–1446. [CrossRef]
+136. Wang, Z. Grid Power Peak Shaving and Valley Filling Using Vehicle-to-Grid Systems. IEEE Trans. Power Deliv.
+2013, 28, 1822–1829. [CrossRef]
+Energies 2020, 13, 4675
+33 of 34
+137. Colmenar-Santos, A.; Linares-Mena, A.-R.; Borge-Diez, D.; Quinto-Alemany, C.-D. Impact assessment of
+electric vehicles on islands grids: A case study for Tenerife (Spain). Energy 2017, 120, 385–396. [CrossRef]
+138. Dagdougui, H.; Ouammi, A.; Dessaint, L.A. Peak Load Reduction in a Smart Building Integrating Microgrid
+and V2B-Based Demand Response Scheme. IEEE Syst. J. 2019, 13, 3274–3282. [CrossRef]
+139. Martinenas, S.; Knezovi´c, K.; Marinelli, M. Management of Power Quality Issues in Low Voltage Networks
+using Electric Vehicles: Experimental Validation. IEEE Trans. Power Deliv. 2016, 32, 1. [CrossRef]
+140. Akhavan-Rezai, E.; Shaaban, M.F.; El-Saadany, E.F.; Karray, F. Managing Demand for Plug-in Electric Vehicles
+in Unbalanced LV Systems with Photovoltaics. IEEE Trans. Ind. Inform. 2017, 13, 1057–1067. [CrossRef]
+141. Farahani, H.F. Improving voltage unbalance of low-voltage distribution networks using plug-in electric
+vehicles. J. Clean. Prod. 2017, 148, 336–346. [CrossRef]
+142. Jiménez, A.; García, N. Voltage unbalance analysis of distribution systems using a three-phase power ﬂow
+ans a Genetic Algorithm for PEV ﬂeets scheduling. In Proceedings of the 2012 IEEE Power Energy Society
+General Meeting 2012, San Diego, CA, USA, 22–26 July 2012; pp. 1–8. [CrossRef]
+143. Jabalameli, N.; Su, X.; Ghosh, A. Online Centralized Charging Coordination of PEVs With Decentralized
+Var Discharging for Mitigation of Voltage Unbalance. IEEE Power Energy Technol. Syst. J. 2019, 6, 152–161.
+[CrossRef]
+144. Gallardo-Lozano, J.; Milanés-Montero, M.I.; Guerrero-Martínez, M.A.; Romero-Cadaval, E. Electric vehicle
+battery charger for smart grids. Electr. Power Syst. Res. 2012, 90, 18–29. [CrossRef]
+145. Rauchfuss, L.; Foulquier, J.; Werner, R. Charging station as an active ﬁlter for harmonics compensation
+of smart grid. In Proceedings of the 2014 16th International Conference on Harmonics and Quality of
+Power (ICHQP), Bucharest, Romania, 5–28 May 2014; Institute of Electrical and Electronics Engineers (IEEE);
+pp. 181–184.
+146. Ali, A.; Raisz, D.; Mahmoud, K. Voltage ﬂuctuation smoothing in distribution systems with RES considering
+degradation and charging plan of EV batteries. Electr. Power Syst. Res. 2019, 176, 105933. [CrossRef]
+147. García-Villalobos, J.; Zamora, I.; Knezovi´c, K.; Marinelli, M. Multi-objective optimization control of plug-in
+electric vehicles in low voltage distribution networks. Appl. Energy 2016, 180, 155–168. [CrossRef]
+148. Brinkel, N.B.G.; Gerritsma, M.K.; AlSkaif, T.A.; Lampropoulos, I.; van Voorden, A.M.; Fidder, H.A.;
+van Sark, W.G.J.H.M. Impact of rapid PV ﬂuctuations on power quality in the low-voltage grid and mitigation
+strategies using electric vehicles. Int. J. Electr. Power Energy Syst. 2020, 118, 105741. [CrossRef]
+149. Magdy, G.; Nour, M.; Shabib, G.; Elbaset, A.A.; Mitani, Y. Supplementary Frequency Control in a
+High-penetration Real Power System by Renewables Using SMES Application. J. Electr. Syst.
+2019,
+15, 526–538.
+150. Liu, L.; Kong, F.; Liu, X.; Peng, Y.; Wang, Q. A review on electric vehicles interacting with renewable energy
+in smart grid. Renew. Sustain. Energy Rev. 2015, 51, 648–661. [CrossRef]
+151. Teng, F.; Aunedi, M.; Strbac, G. Beneﬁts of ﬂexibility from smart electriﬁed transportation and heating in the
+future UK electricity system. Appl. Energy 2016, 167, 420–431. [CrossRef]
+152. Dallinger, D.; Wietschel, M. Grid integration of intermittent renewable energy sources using price-responsive
+plug-in electric vehicles. Renew. Sustain. Energy Rev. 2012, 16, 3370–3382. [CrossRef]
+153. Dallinger, D.; Gerda, S.; Wietschel, M. Integration of intermittent renewable power supply using
+grid-connected vehicles—A 2030 case study for California and Germany. Appl. Energy 2013, 104, 666–682.
+[CrossRef]
+154. Lund, H.; Kempton, W. Integration of renewable energy into the transport and electricity sectors through
+V2G. Energy Policy 2008, 36, 3578–3587. [CrossRef]
+155. Li, Y.; Li, K. Incorporating Demand Response of Electric Vehicles in Scheduling of Isolated Microgrids With
+Renewables Using a Bi-Level Programming Approach. IEEE Access 2019, 7, 116256–116266. [CrossRef]
+156. Carrión, M.; Zárate-Miñano, R. Operation of renewable-dominated power systems with a signiﬁcant
+penetration of plug-in electric vehicles. Energy 2015, 90, 827–835. [CrossRef]
+157. Saber, A.Y.; Venayagamoorthy, G.K.; Member, S. Plug-in Vehicles and Renewable Energy Sources for Cost
+and Emission Reductions Plug-in Vehicles and Renewable Energy Sources for Cost and Emission Reductions.
+IEEE Trans. Ind. Electron. 2016, 58, 1229–1238. [CrossRef]
+158. Kordkheili, R.A.; Pourmousavi, S.A.; Savaghebi, M.; Guerrero, J.M.; Nehrir, M.H. Assessing the Potential of
+Plug-in Electric Vehicles in Active Distribution Networks. Energies 2016, 9, 34. [CrossRef]
+Energies 2020, 13, 4675
+34 of 34
+159. Ahmadian, A.; Sedghi, M.; Mohammadi-Ivatloo, B.; Elkamel, A.; Golkar, M.A.; Fowler, M. Cost-Beneﬁt
+Analysis of V2G Implementation in Distribution Networks Considering PEVs Battery Degradation. IEEE Trans.
+Sustain. Energy 2017, 9, 961–970. [CrossRef]
+160. Arias, N.B.; Hashemi, S.; Andersen, P.B.; Traeholt, C.; Romero, R. Distribution System Services Provided by
+Electric Vehicles: Recent Status, Challenges, and Future Prospects. IEEE Trans. Intell. Transp. Syst. 2019, 20,
+4277–4296. [CrossRef]
+161. Zecchino, A.; Knezovi´c, K.; Marinelli, M. Identification of conflicts between transmission and distribution system
+operators when acquiring ancillary services from electric vehicles. In Proceedings of the 2017 IEEE PES Innovative
+Smart Grid Technologies Conference Europe (ISGT-Europe), Torino, Italy, 26–29 September 2017.
+162. Gerard, H.; Puente, E.I.R.; Six, D. Coordination between transmission and distribution system operators in
+the electricity sector: A conceptual framework. Util. Policy 2018, 50, 40–48. [CrossRef]
+163. Zeb, M.Z.; Imran, K.; Khattak, A.; Janjua, A.K.; Pal, A.; Nadeem, M.; Zhang, J.; Khan, S. Optimal Placement
+of Electric Vehicle Charging Stations in the Active Distribution Network. IEEE Access 2020, 8, 68124–68134.
+[CrossRef]
+164. Zhang, H.; Moura, S.J.; Hu, Z.; Song, Y. PEV Fast-Charging Station Siting and Sizing on Coupled Transportation
+and Power Networks. IEEE Trans. Smart Grid 2018, 9, 2595–2605. [CrossRef]
+© 2020 by the authors. Licensee MDPI, Basel, Switzerland. This article is an open access
+article distributed under the terms and conditions of the Creative Commons Attribution
+(CC BY) license (http://creativecommons.org/licenses/by/4.0/).
