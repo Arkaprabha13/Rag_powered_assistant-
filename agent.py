@@ -205,8 +205,10 @@ class QAAgent:
         
         # Check for calculator keywords
         calculator_keywords = ["calculate", "compute", "solve", "math", "arithmetic"]
-        if any(keyword in query for keyword in calculator_keywords) or re.search(r'[0-9+\-*/()^]', query):
+        # More specific regex for calculator detection
+        if any(keyword in query for keyword in calculator_keywords) or re.search(r'(\d+\s*[\+\-\*/\(\)\^]\s*\d+)', query):
             return "Calculator"
+
         
         # Check for dictionary keywords
         dictionary_keywords = ["define", "definition", "meaning", "what is", "what are"]
