@@ -3,6 +3,7 @@ import os
 import sys
 from agent import QAAgent
 from ingest import ingest_docs
+import fitz  # PyMuPDF for PDF extraction
 
 # Set page configuration
 st.set_page_config(
@@ -21,6 +22,28 @@ if "chat_history" not in st.session_state:
 # Main app title
 st.title("🤖 RAG-Powered Multi-Agent Q&A Assistant")
 
+# Function to convert PDF to text and save as .txt
+def convert_pdf_to_txt(pdf_file):
+    """
+    Converts a PDF file to a .txt file and saves it in the 'data' directory.
+    """
+    try:
+        doc = fitz.open(pdf_file)
+        text = ""
+        for page_num in range(doc.page_count):
+            page = doc.load_page(page_num)
+            text += page.get_text()
+        
+        # Save the extracted text as a .txt file
+        txt_file_path = os.path.join(os.path.dirname(__file__), "data", f"{pdf_file.name}.txt")
+        with open(txt_file_path, "w", encoding="utf-8") as f:
+            f.write(text)
+        st.success(f"✅ Converted {pdf_file.name} to text")
+        return txt_file_path
+    except Exception as e:
+        st.error(f"❌ Error converting {pdf_file.name}: {e}")
+        return None
+
 # Sidebar for document ingestion
 with st.sidebar:
     st.header("Document Management")
@@ -34,8 +57,8 @@ with st.sidebar:
     else:
         st.warning("⚠️ Document database not found. Please ingest documents.")
     
-    # Upload documents
-    uploaded_files = st.file_uploader("Upload documents", accept_multiple_files=True, type=["txt"])
+    # Upload documents (accept txt and pdf files)
+    uploaded_files = st.file_uploader("Upload documents", accept_multiple_files=True, type=["txt", "pdf"])
     
     if uploaded_files:
         data_dir = os.path.join(os.path.dirname(__file__), "data")
@@ -46,9 +69,17 @@ with st.sidebar:
             file_path = os.path.join(data_dir, file.name)
             with open(file_path, "wb") as f:
                 f.write(file.getbuffer())
+            
+            if file.type == "application/pdf":
+                # If the file is a PDF, convert to txt
+                txt_file_path = convert_pdf_to_txt(file)
+                if txt_file_path:
+                    st.success(f"✅ PDF file {file.name} converted and saved.")
+                else:
+                    st.error(f"❌ PDF conversion failed for {file.name}")
+            else:
+                st.success(f"✅ {file.name} uploaded successfully")
         
-        st.success(f"✅ {len(uploaded_files)} files uploaded successfully")
-    
     # Ingest documents button
     if st.button("Ingest Documents"):
         with st.spinner("Ingesting documents..."):
@@ -95,6 +126,7 @@ if st.session_state.chat_history:
             st.write(f"**Answer**: {chat['result']['answer']}")
             st.write(f"**Tool Used**: {chat['result']['tool_used']}")
             st.write(f"**Context**: {chat['result']['context']}")
+
 # Footer
 st.markdown(
     """
