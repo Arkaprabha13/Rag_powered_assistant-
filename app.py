@@ -28,14 +28,25 @@ def convert_pdf_to_txt(pdf_file):
     Converts a PDF file to a .txt file and saves it in the 'data' directory.
     """
     try:
-        doc = fitz.open(pdf_file)
+        # Create a temporary path to save the uploaded PDF file
+        data_dir = os.path.join(os.path.dirname(__file__), "data")
+        if not os.path.exists(data_dir):
+            os.makedirs(data_dir)
+        
+        # Save the uploaded PDF file
+        pdf_file_path = os.path.join(data_dir, pdf_file.name)
+        with open(pdf_file_path, "wb") as f:
+            f.write(pdf_file.getbuffer())
+        
+        # Open the saved PDF with fitz
+        doc = fitz.open(pdf_file_path)
         text = ""
         for page_num in range(doc.page_count):
             page = doc.load_page(page_num)
             text += page.get_text()
         
         # Save the extracted text as a .txt file
-        txt_file_path = os.path.join(os.path.dirname(__file__), "data", f"{pdf_file.name}.txt")
+        txt_file_path = pdf_file_path.replace(".pdf", ".txt")
         with open(txt_file_path, "w", encoding="utf-8") as f:
             f.write(text)
         st.success(f"✅ Converted {pdf_file.name} to text")
@@ -66,18 +77,18 @@ with st.sidebar:
             os.makedirs(data_dir)
         
         for file in uploaded_files:
-            file_path = os.path.join(data_dir, file.name)
-            with open(file_path, "wb") as f:
-                f.write(file.getbuffer())
-            
             if file.type == "application/pdf":
-                # If the file is a PDF, convert to txt
+                # If the file is a PDF, convert it to txt
                 txt_file_path = convert_pdf_to_txt(file)
                 if txt_file_path:
                     st.success(f"✅ PDF file {file.name} converted and saved.")
                 else:
                     st.error(f"❌ PDF conversion failed for {file.name}")
             else:
+                # For TXT files, just save them
+                file_path = os.path.join(data_dir, file.name)
+                with open(file_path, "wb") as f:
+                    f.write(file.getbuffer())
                 st.success(f"✅ {file.name} uploaded successfully")
         
     # Ingest documents button
