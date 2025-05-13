@@ -51,8 +51,8 @@ The system follows a modular architecture with several key components:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/rag-agent-qa.git
-    cd rag-agent-qa
+    git clone [https://github.com/yourusername/rag-agent-qa.git](https://github.com/Arkaprabha13/Rag_powered_assistant-.git)
+    cd Rag_powered_assistant
     ```
 
 2. Create a virtual environment and install dependencies:
