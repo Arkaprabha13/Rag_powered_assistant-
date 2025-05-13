@@ -5,8 +5,30 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from dotenv import load_dotenv
+import fitz  # PyMuPDF for PDF extraction
 
 load_dotenv()
+
+def convert_pdf_to_txt(pdf_path):
+    """
+    Converts a PDF to a .txt file.
+    """
+    try:
+        doc = fitz.open(pdf_path)
+        text = ""
+        for page_num in range(doc.page_count):
+            page = doc.load_page(page_num)
+            text += page.get_text()
+        
+        # Save the extracted text to a .txt file
+        txt_path = pdf_path.replace(".pdf", ".txt")
+        with open(txt_path, "w", encoding="utf-8") as f:
+            f.write(text)
+        print(f"Converted {pdf_path} to {txt_path}")
+        return txt_path
+    except Exception as e:
+        print(f"Error converting PDF {pdf_path}: {e}")
+        return None
 
 def ingest_docs():
     """
@@ -22,6 +44,13 @@ def ingest_docs():
         os.makedirs(data_dir)
         print(f"Created data directory at {data_dir}. Please add your documents there.")
         return
+    
+    # Convert any PDF files to text and load them
+    for file_path in glob.glob(os.path.join(data_dir, "*.pdf")):
+        txt_path = convert_pdf_to_txt(file_path)
+        if txt_path:
+            loader = TextLoader(txt_path, encoding='utf-8')
+            documents.extend(loader.load())
     
     # Load all text files from the data directory
     for file_path in glob.glob(os.path.join(data_dir, "*.txt")):
@@ -43,7 +72,7 @@ def ingest_docs():
             print(f"Error loading {file_path}: {e}")
     
     if not documents:
-        print("No documents found in the data directory. Please add some .txt files.")
+        print("No documents found in the data directory. Please add some .txt or .pdf files.")
         return
     
     # Split documents into chunks
