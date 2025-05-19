@@ -1,6 +1,10 @@
 import streamlit as st
 import os
 import sys
+import csv
+import json
+import pandas as pd
+import xml.etree.ElementTree as ET
 from agent import QAAgent
 from ingest import ingest_docs
 import fitz  # PyMuPDF for PDF extraction
@@ -24,9 +28,6 @@ st.title("🤖 RAG-Powered Multi-Agent Q&A Assistant")
 
 # Function to convert PDF to text and save as .txt
 def convert_pdf_to_txt(pdf_file):
-    """
-    Converts a PDF file to a .txt file and saves it in the 'data' directory.
-    """
     try:
         # Create a temporary path to save the uploaded PDF file
         data_dir = os.path.join(os.path.dirname(__file__), "data")
@@ -55,6 +56,115 @@ def convert_pdf_to_txt(pdf_file):
         st.error(f"❌ Error converting {pdf_file.name}: {e}")
         return None
 
+# Function to convert CSV to text and save as .txt
+def convert_csv_to_txt(csv_file):
+    try:
+        data_dir = os.path.join(os.path.dirname(__file__), "data")
+        if not os.path.exists(data_dir):
+            os.makedirs(data_dir)
+        
+        # Save the uploaded CSV file
+        csv_file_path = os.path.join(data_dir, csv_file.name)
+        with open(csv_file_path, "wb") as f:
+            f.write(csv_file.getbuffer())
+        
+        # Read the CSV file
+        with open(csv_file_path, mode='r', newline='', encoding='utf-8') as f:
+            reader = csv.reader(f)
+            rows = list(reader)
+        
+        # Save the CSV data as .txt
+        txt_file_path = csv_file_path.replace(".csv", ".txt")
+        with open(txt_file_path, "w", encoding="utf-8") as f:
+            for row in rows:
+                f.write("\t".join(row) + "\n")
+        
+        st.success(f"✅ Converted {csv_file.name} to text")
+        return txt_file_path
+    except Exception as e:
+        st.error(f"❌ Error converting {csv_file.name}: {e}")
+        return None
+
+# Function to convert JSON to text and save as .txt
+def convert_json_to_txt(json_file):
+    try:
+        data_dir = os.path.join(os.path.dirname(__file__), "data")
+        if not os.path.exists(data_dir):
+            os.makedirs(data_dir)
+        
+        # Save the uploaded JSON file
+        json_file_path = os.path.join(data_dir, json_file.name)
+        with open(json_file_path, "wb") as f:
+            f.write(json_file.getbuffer())
+        
+        # Read the JSON file
+        with open(json_file_path, "r", encoding='utf-8') as f:
+            data = json.load(f)
+        
+        # Save the JSON data as .txt
+        txt_file_path = json_file_path.replace(".json", ".txt")
+        with open(txt_file_path, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=4)
+        
+        st.success(f"✅ Converted {json_file.name} to text")
+        return txt_file_path
+    except Exception as e:
+        st.error(f"❌ Error converting {json_file.name}: {e}")
+        return None
+
+# Function to convert XLSX to text and save as .txt
+def convert_xlsx_to_txt(xlsx_file):
+    try:
+        data_dir = os.path.join(os.path.dirname(__file__), "data")
+        if not os.path.exists(data_dir):
+            os.makedirs(data_dir)
+        
+        # Save the uploaded XLSX file
+        xlsx_file_path = os.path.join(data_dir, xlsx_file.name)
+        with open(xlsx_file_path, "wb") as f:
+            f.write(xlsx_file.getbuffer())
+        
+        # Read the XLSX file using pandas
+        df = pd.read_excel(xlsx_file_path)
+        
+        # Save the XLSX data as .txt
+        txt_file_path = xlsx_file_path.replace(".xlsx", ".txt")
+        df.to_csv(txt_file_path, sep='\t', index=False)
+        
+        st.success(f"✅ Converted {xlsx_file.name} to text")
+        return txt_file_path
+    except Exception as e:
+        st.error(f"❌ Error converting {xlsx_file.name}: {e}")
+        return None
+
+# Function to convert XML to text and save as .txt
+def convert_xml_to_txt(xml_file):
+    try:
+        data_dir = os.path.join(os.path.dirname(__file__), "data")
+        if not os.path.exists(data_dir):
+            os.makedirs(data_dir)
+        
+        # Save the uploaded XML file
+        xml_file_path = os.path.join(data_dir, xml_file.name)
+        with open(xml_file_path, "wb") as f:
+            f.write(xml_file.getbuffer())
+        
+        # Parse the XML file
+        tree = ET.parse(xml_file_path)
+        root = tree.getroot()
+        
+        # Save the XML data as .txt
+        txt_file_path = xml_file_path.replace(".xml", ".txt")
+        with open(txt_file_path, "w", encoding="utf-8") as f:
+            for elem in root.iter():
+                f.write(f"{elem.tag}: {elem.text}\n")
+        
+        st.success(f"✅ Converted {xml_file.name} to text")
+        return txt_file_path
+    except Exception as e:
+        st.error(f"❌ Error converting {xml_file.name}: {e}")
+        return None
+
 # Sidebar for document ingestion
 with st.sidebar:
     st.header("Document Management")
@@ -68,8 +178,8 @@ with st.sidebar:
     else:
         st.warning("⚠️ Document database not found. Please ingest documents.")
     
-    # Upload documents (accept txt and pdf files)
-    uploaded_files = st.file_uploader("Upload documents", accept_multiple_files=True, type=["txt", "pdf"])
+    # Upload documents (accept txt, pdf, csv, json, xlsx, xml files)
+    uploaded_files = st.file_uploader("Upload documents", accept_multiple_files=True, type=["txt", "pdf", "csv", "json", "xlsx", "xml"])
     
     if uploaded_files:
         data_dir = os.path.join(os.path.dirname(__file__), "data")
@@ -80,16 +190,26 @@ with st.sidebar:
             if file.type == "application/pdf":
                 # If the file is a PDF, convert it to txt
                 txt_file_path = convert_pdf_to_txt(file)
-                if txt_file_path:
-                    st.success(f"✅ PDF file {file.name} converted and saved.")
-                else:
-                    st.error(f"❌ PDF conversion failed for {file.name}")
+            elif file.type == "application/json":
+                txt_file_path = convert_json_to_txt(file)
+            elif file.type == "text/csv":
+                txt_file_path = convert_csv_to_txt(file)
+            elif file.type == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
+                txt_file_path = convert_xlsx_to_txt(file)
+            elif file.type == "application/xml":
+                txt_file_path = convert_xml_to_txt(file)
             else:
                 # For TXT files, just save them
                 file_path = os.path.join(data_dir, file.name)
                 with open(file_path, "wb") as f:
                     f.write(file.getbuffer())
+                txt_file_path = file_path
                 st.success(f"✅ {file.name} uploaded successfully")
+            
+            if txt_file_path:
+                st.success(f"✅ {file.name} converted and saved as .txt")
+            else:
+                st.error(f"❌ Failed to convert {file.name}")
         
     # Ingest documents button
     if st.button("Ingest Documents"):
