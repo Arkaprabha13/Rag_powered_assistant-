@@ -1,6 +1,5 @@
 import streamlit as st
 import os
-import sys
 import csv
 import json
 import pandas as pd
@@ -8,6 +7,7 @@ import xml.etree.ElementTree as ET
 from agent import QAAgent
 from ingest import ingest_docs
 import fitz  # PyMuPDF for PDF extraction
+from fpdf import FPDF
 
 # Set page configuration
 st.set_page_config(
@@ -165,6 +165,40 @@ def convert_xml_to_txt(xml_file):
         st.error(f"❌ Error converting {xml_file.name}: {e}")
         return None
 
+# Function to save chat history to a PDF
+def save_chat_history_to_pdf(chat_history):
+    try:
+        pdf = FPDF()
+        pdf.set_auto_page_break(auto=True, margin=15)
+        pdf.add_page()
+        pdf.set_font("Arial", size=12)
+        
+        for chat in chat_history:
+            pdf.cell(200, 10, txt=f"Q: {chat['query']}", ln=True)
+            pdf.multi_cell(200, 10, txt=f"A: {chat['result']['answer']}\n")
+            pdf.ln(10)
+        
+        data_dir = os.path.join(os.path.dirname(__file__), "data")
+        pdf_file_path = os.path.join(data_dir, "chat_history.pdf")
+        pdf.output(pdf_file_path)
+        return pdf_file_path
+    except Exception as e:
+        st.error(f"❌ Error saving PDF: {e}")
+        return None
+
+# Function to save chat history to an Excel file
+def save_chat_history_to_xlsx(chat_history):
+    try:
+        data = [{"Query": chat["query"], "Answer": chat["result"]["answer"]} for chat in chat_history]
+        df = pd.DataFrame(data)
+        data_dir = os.path.join(os.path.dirname(__file__), "data")
+        xlsx_file_path = os.path.join(data_dir, "chat_history.xlsx")
+        df.to_excel(xlsx_file_path, index=False)
+        return xlsx_file_path
+    except Exception as e:
+        st.error(f"❌ Error saving Excel: {e}")
+        return None
+
 # Sidebar for document ingestion
 with st.sidebar:
     st.header("Document Management")
@@ -257,6 +291,21 @@ if st.session_state.chat_history:
             st.write(f"**Answer**: {chat['result']['answer']}")
             st.write(f"**Tool Used**: {chat['result']['tool_used']}")
             st.write(f"**Context**: {chat['result']['context']}")
+
+# Download options
+st.download_button(
+    label="Download Chat History as PDF",
+    data=save_chat_history_to_pdf(st.session_state.chat_history),
+    file_name="chat_history.pdf",
+    mime="application/pdf"
+)
+
+st.download_button(
+    label="Download Chat History as Excel",
+    data=save_chat_history_to_xlsx(st.session_state.chat_history),
+    file_name="chat_history.xlsx",
+    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+)
 
 # Footer
 st.markdown(
