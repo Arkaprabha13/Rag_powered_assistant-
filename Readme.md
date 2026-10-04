@@ -2,118 +2,88 @@
 
 ## Overview
 
-This project implements a sophisticated knowledge assistant that combines Retrieval-Augmented Generation (RAG) with a multi-agent architecture to deliver accurate, context-aware responses. The system intelligently routes queries to specialized tools based on query intent, retrieves relevant information from a document collection, and generates natural language answers using state-of-the-art language models.
-
-**System Architecture** Intelligent query routing between specialized tools based on intent detection
-- **Retrieval-Augmented Generation (RAG)**: Enhances LLM responses with relevant context from a document collection
-- **Interactive Web Interface**: Clean, user-friendly Streamlit application for asking questions and viewing results
-- **Document Management**: Upload and process new documents through the web interface
-- **Specialized Tools**:
-  - **RAG Tool**: Retrieves and synthesizes information from document collection
-  - **Calculator Tool**: Performs mathematical calculations with comprehensive operator support
-  - **Dictionary Tool**: Provides definitions enhanced by document context
+This project combines Retrieval-Augmented Generation (RAG) with a tool-routing architecture for document-grounded question answering. Queries are routed to specialized RAG, calculator, or dictionary tools, while the Streamlit interface supports document ingestion and interactive answers.
 
 ## Technology Stack
 
-- **Vector Database**: FAISS for efficient similarity search
-- **Embeddings**: HuggingFace's E5 model (intfloat/e5-base-v2)
-- **LLM Integration**: Groq API with Llama 3 models for fast, accurate responses
-- **Frontend**: Streamlit for interactive web interface
-- **Document Processing**: LangChain's document loaders and text splitters
+- **Retrieval:** FAISS similarity search with top-3 retrieval
+- **Embeddings:** Hugging Face `intfloat/e5-base-v2`
+- **LLM:** Groq API with Llama 3
+- **Document processing:** LangChain, PyMuPDF, RecursiveCharacterTextSplitter
+- **UI:** Streamlit
+- **API:** FastAPI + Uvicorn
+- **Testing:** pytest
 
 ## Architecture
 
-The system follows a modular architecture with several key components:
+1. Documents are loaded from `data/`.
+2. PDF files are converted to text.
+3. Documents are split into **1,000-character chunks with 200-character overlap**.
+4. E5 embeddings are generated and persisted in a FAISS vector store.
+5. Incoming queries are routed to the RAG, calculator, or dictionary tool.
+6. RAG retrieves the top 3 relevant chunks and uses the retrieved context for LLM generation.
+7. The same QA pipeline is exposed through REST endpoints in `api.py`.
 
-1. **Document Ingestion Pipeline**:
-   - Loads documents from the data directory
-   - Splits documents into semantically meaningful chunks
-   - Computes embeddings for each chunk
-   - Stores vectors in a FAISS index for efficient retrieval
+## Run the Streamlit application
 
-2. **Multi-Agent System**:
-   - Analyzes query intent using keyword detection and pattern matching
-   - Routes queries to specialized tools based on intent
-   - Orchestrates the retrieval and generation process
+```bash
+python ingest.py
+streamlit run app.py
+```
 
-3. **Response Generation**:
-   - Retrieves relevant document chunks based on query similarity
-   - Constructs prompts that combine the query with retrieved context
-   - Generates coherent, contextually accurate responses using Groq's Llama 3 models
+## Run the REST API
 
-## Installation and Setup
+```bash
+uvicorn api:app --reload
+```
 
-### Prerequisites
-- Python 3.8+
-- Groq API key
+Endpoints:
 
-### Installation
+- `GET /health` - service health check
+- `POST /query` - process a document-grounded query
+- `POST /upload` - upload and ingest TXT/PDF documents
 
-1. Clone the repository:
-    ```bash
-    git clone [https://github.com/yourusername/rag-agent-qa.git](https://github.com/Arkaprabha13/Rag_powered_assistant-.git)
-    cd Rag_powered_assistant
-    ```
+Example:
 
-2. Create a virtual environment and install dependencies:
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows: venv\Scripts\activate
-    pip install -r requirements.txt
-    ```
+```json
+POST /query
+{
+  "query": "What are the negative impacts of uncontrolled EV charging?"
+}
+```
 
-3. Create a `.env` file with your API keys:
-    ```
-    GROQ_API_KEY=your_groq_api_key_here
-    ```
+## Testing
 
-### Running the Application
+Run the API test suite with:
 
-1. Add documents to the `data` directory (sample documents are provided)
+```bash
+pytest -q
+```
 
-2. Ingest the documents to create the vector store:
-    ```bash
-    python ingest.py
-    ```
+The tests cover the health endpoint, query validation, mocked agent responses, upload validation, and TXT ingestion.
 
-3. Launch the Streamlit application:
-    ```bash
-    streamlit run app.py
-    ```
+## Retrieval evaluation
 
-4. Open your browser and navigate to `http://localhost:8501`
+A 25-question evaluation set is included under `evaluation/questions.json`. Run:
 
-## Usage Examples
+```bash
+python evaluation/run_evaluation.py
+```
 
-### Information Retrieval
-- "What are the main factors driving electric vehicle adoption?"
-- "Explain the negative impacts of uncontrolled EV charging on power systems."
+The runner reports retrieval hit rate by checking whether the expected source document appears in the retrieved context. This keeps the reported metric reproducible rather than claiming an unverified score. For answer-quality evaluation, review the generated answers against the same question set using a 0-2 correctness rubric before publishing a final quality percentage.
 
-### Calculations
-- "Calculate 25 * 16 + 42"
-- "What is the square root of 169 divided by 13?"
+## Design Choices
 
-## Design Choices and Optimizations
+- **1,000-character chunks + 200-character overlap:** balances context preservation with retrieval precision.
+- **E5 embeddings:** dense semantic retrieval without requiring an external embedding API.
+- **FAISS:** local vector index for fast similarity search.
+- **FastAPI wrapper:** exposes the existing QA pipeline for programmatic use without changing the Streamlit workflow.
+- **Automated tests:** protects the REST layer from regressions while mocking the external LLM dependency.
 
-- **Chunking Strategy**: 1000-character chunks with 200-character overlap balances context preservation with retrieval precision
-- **E5 Embeddings**: Offers comparable performance to OpenAI embeddings with smaller vector dimensions (768 vs 1536)
-- **Direct Groq Integration**: Bypasses LangChain wrappers for more reliable API interactions
-- **Error Handling**: Graceful fallbacks ensure system reliability even when components fail
+## Environment
 
-## Future Enhancements
+Create a `.env` file containing:
 
-- Implement conversation memory for follow-up questions
-- Add support for PDF and other document formats
-- Integrate additional specialized tools (e.g., image analysis, code execution)
-- Implement hybrid search combining sparse and dense retrievers
-- Add user authentication and document permission management
-
-## Acknowledgments
-
-- LangChain for document processing utilities
-- HuggingFace for embedding models
-- Groq for LLM API access
-- FAISS for vector similarity search
-- Streamlit for the web interface framework
-
----
+```
+GROQ_API_KEY=your_groq_api_key_here
+```
