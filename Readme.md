@@ -37,6 +37,15 @@ streamlit run app.py
 uvicorn api:app --reload
 ```
 
+## Run with Docker
+
+```bash
+docker build -t rag-qa-api .
+docker run --rm -p 8000:8000 --env-file .env rag-qa-api
+```
+
+The FastAPI service is exposed on port `8000`.
+
 Endpoints:
 
 - `GET /health` - service health check
